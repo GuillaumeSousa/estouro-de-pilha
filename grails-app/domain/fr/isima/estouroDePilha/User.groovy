@@ -9,9 +9,10 @@ class User {
 	String password
 	String website
 	String location
-	Date birth_date
-	Date register_date
+	Date birthDate
+	Date registerDate
 	int reputation
+	
     static constraints = {
     }
 }
