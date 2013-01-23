@@ -2,5 +2,5 @@ package fr.isima.estouroDePilha
 
 class UserController {
 
-    def index() { }
+	static scaffold = true
 }
