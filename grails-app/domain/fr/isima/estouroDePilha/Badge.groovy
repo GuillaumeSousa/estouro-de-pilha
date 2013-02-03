@@ -5,7 +5,7 @@ import fr.isima.estouroDePilha.User;
 class Badge {
 	String badgeName
 	String description
-	//conditions
 	
-	//static hasMany = [users:User]
+	static hasMany = [users:User]
+	static belongsTo = [User]
 }

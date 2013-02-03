@@ -6,8 +6,7 @@ import fr.isima.estouroDePilha.Tag;
 
 class Question extends Post{
 	String 		subject
-	int 		nbViews
-	Date 		activationDate
+	int 		nbViews = 0
 	
 	static hasMany = [answers:Answer, comments : Comment, tags : Tag]
 }
