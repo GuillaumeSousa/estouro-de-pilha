@@ -1,10 +1,10 @@
 package fr.isima.estouroDePilha
 
-//import fr.isim.estouroDePilha.Question
+import fr.isima.estouroDePilha.Question
 
 class IndexController {
 
 	def index = {
-		[questionList: Question.findAll()] 
+		[questionList: Question.findAll(), questionNumber:Question.count()] 
 	}
 }
