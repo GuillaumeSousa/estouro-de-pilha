@@ -117,6 +117,11 @@
 					</g:each>
 				</ul>
 			</div>
+			<div>
+				<g:each in="${questionList}" var="question">
+					<p>${question.subject}</p>
+				</g:each>
+			</div>
 		</div>
 	</body>
 </html>

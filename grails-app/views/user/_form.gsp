@@ -1,7 +1,6 @@
 <%@ page import="fr.isima.estouroDePilha.User" %>
 
 
-
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'login', 'error')} required">
 	<label for="login">
 		<g:message code="user.login.label" default="Login" />
