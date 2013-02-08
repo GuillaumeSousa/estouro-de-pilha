@@ -82,14 +82,7 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		
 		<div id="status" role="complementary">
-			<h1>Menu</h1>
-			<ul>
-				<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-					<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
-				</g:each>
-			</ul>
 			<h1>Recent Tags</h1>
 		</div>
 		<div id="page-body" role="main">

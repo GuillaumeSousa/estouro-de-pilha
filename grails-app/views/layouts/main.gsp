@@ -19,7 +19,20 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+		<div id="header" role="banner">
+			<!--<a href="http://grails.org">
+				<img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/>
+			</a>-->
+			<div class="nav">
+				<ul>
+					<li><a class="home" href="${createLink(uri: '/')}">Estouro De Pilha</a></li>
+			 		<li><g:link controller="Question" action="list">Answers</g:link></li>
+					<li><g:link controller="User" action="list">Users</g:link></li>
+				</ul>
+			</div>
+		</div>
+		
+
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
