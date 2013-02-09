@@ -685,3 +685,12 @@ margin: 0 auto;
 	text-decoration: underline;
 }
 
+.owner {
+background-color: #e0eaf1;
+}
+
+.post-signature {
+text-align: left;
+vertical-align: top;
+width: 200px;
+}

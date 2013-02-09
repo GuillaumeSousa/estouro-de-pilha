@@ -9,14 +9,6 @@
 	<g:textField name="subject" value="${questionInstance?.subject}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'author', 'error')} ">
-	<label for="author">
-		<g:message code="question.author.label" default="Author" />
-		
-	</label>
-	<g:textField name="author" value="${questionInstance?.author}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'message', 'error')} ">
 	<label for="message">
 		<g:message code="question.message.label" default="Message" />
