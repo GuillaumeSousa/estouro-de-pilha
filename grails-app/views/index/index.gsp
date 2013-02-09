@@ -87,6 +87,9 @@
 			<h1>Recent Tags</h1>
 		</div>
 		<div id="page-body" role="main">
+			<g:if test="${flash.message}">
+		        <div class="message">${flash.message}</div>
+		    </g:if>
 			<table>
 				<g:each in="${questionList}" status="i" var="questionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
