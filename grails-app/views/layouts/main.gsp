@@ -23,6 +23,21 @@
 			<!--<a href="http://grails.org">
 				<img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/>
 			</a>-->
+			
+			<div class="topbar">
+	          <div class="global-nav" data-section-term="top_nav">
+	            <div class="global-nav-inner">
+	              <div class="container">
+	            	<div class="logbar">
+						<ul>
+							<li><g:link controller="User" action="list">Log on</g:link></li>
+						</ul>
+					</div>
+	              </div>
+	             </div>
+        		</div>
+        	</div>
+        	
 			<div class="nav">
 				<ul>
 					<li><a class="home" href="${createLink(uri: '/')}">Estouro De Pilha</a></li>
