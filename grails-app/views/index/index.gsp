@@ -8,9 +8,8 @@
 				background-color: #eee;
 				border: .2em solid #fff;
 				margin: 2em 2em 1em;
-				padding: 1em;
 				width: 12em;
-				float: left;
+				float: right;
 				-moz-box-shadow: 0px 0px 1.25em #ccc;
 				-webkit-box-shadow: 0px 0px 1.25em #ccc;
 				box-shadow: 0px 0px 1.25em #ccc;
@@ -41,7 +40,8 @@
 			}
 
 			#page-body {
-				margin: 2em 1em 1.25em 18em;
+				margin-right: 17em;
+				margin-top: 2em;
 			}
 
 			h2 {

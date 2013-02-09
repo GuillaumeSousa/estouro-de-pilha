@@ -8,7 +8,7 @@
 				background-color: #eee;
 				border: .2em solid #fff;
 				margin: 2em 2em 1em;
-				padding: 1em;
+				padding-right: 1em;
 				width: 12em;
 				float: left;
 				-moz-box-shadow: 0px 0px 1.25em #ccc;
