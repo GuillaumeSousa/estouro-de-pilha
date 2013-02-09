@@ -9,51 +9,25 @@
 	</head>
 	<body>
 		<a href="#list-question" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-question" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
+		<div id="page-body" role="main">
 			<table>
-				<thead>
-					<tr>
-					
-					
-						<g:sortableColumn property="author" title="${message(code: 'question.author.label', default: 'Author')}" />
-					
-						<g:sortableColumn property="message" title="${message(code: 'question.message.label', default: 'Message')}" />
-					
-						<g:sortableColumn property="nbViews" title="${message(code: 'question.nbViews.label', default: 'Nb Views')}" />
-					
-						<g:sortableColumn property="nbVotes" title="${message(code: 'question.nbVotes.label', default: 'Nb Votes')}" />
-					
-						<g:sortableColumn property="postedDate" title="${message(code: 'question.postedDate.label', default: 'Posted Date')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
 				<g:each in="${questionInstanceList}" status="i" var="questionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td>${fieldValue(bean: questionInstance, field: "author")}</td>
-					
-						<td>${fieldValue(bean: questionInstance, field: "message")}</td>
-					
-						<td>${fieldValue(bean: questionInstance, field: "nbViews")}</td>
-					
-						<td>${fieldValue(bean: questionInstance, field: "nbVotes")}</td>
-					
-						<td><g:formatDate date="${questionInstance.postedDate}" /></td>
-					
+						
+						<td>
+						<b style="color:blue; font-size: 9">${fieldValue(bean: questionInstance, field: "subject")}</b><br>
+						Author : ${fieldValue(bean: questionInstance, field: "author")}<br>
+						date : <g:formatDate date="${questionInstance.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
+						${fieldValue(bean: questionInstance, field: "message")}
+						</td>
+											
+						<td><br>
+						${fieldValue(bean: questionInstance, field: "nbViews")} views<br>
+						${fieldValue(bean: questionInstance, field: "nbVotes")} votes
+						</td>
 					</tr>
-				</g:each>
-				</tbody>
-			</table>
+				</g:each>	
+			</table>				
 			<div class="pagination">
 				<g:paginate total="${questionInstanceTotal}" />
 			</div>

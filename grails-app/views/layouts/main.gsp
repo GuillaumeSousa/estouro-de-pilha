@@ -26,8 +26,11 @@
 			<div class="nav">
 				<ul>
 					<li><a class="home" href="${createLink(uri: '/')}">Estouro De Pilha</a></li>
-			 		<li><g:link controller="Question" action="list">Answers</g:link></li>
+			 		<li><g:link controller="Question" action="list">Questions</g:link></li>
 					<li><g:link controller="User" action="list">Users</g:link></li>
+					<li><g:link controller="Tag" action="list">Tags</g:link></li>
+					<li><g:link controller="Badge" action="list">Badges</g:link></li>
+					<li><g:link controller="Question" action="create">Ask Question</g:link></li>
 				</ul>
 			</div>
 		</div>
