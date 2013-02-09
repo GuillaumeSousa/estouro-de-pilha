@@ -8,9 +8,9 @@
 				background-color: #eee;
 				border: .2em solid #fff;
 				margin: 2em 2em 1em;
-				padding: 1em;
+				padding: 0.7em .3em;
 				width: 12em;
-				float: left;
+				float: right;
 				-moz-box-shadow: 0px 0px 1.25em #ccc;
 				-webkit-box-shadow: 0px 0px 1.25em #ccc;
 				box-shadow: 0px 0px 1.25em #ccc;
@@ -41,7 +41,8 @@
 			}
 
 			#page-body {
-				margin: 2em 1em 1.25em 18em;
+				margin-right: 17em;
+				margin-top: 2em;
 			}
 
 			h2 {
@@ -86,12 +87,15 @@
 			<h1>Recent Tags</h1>
 		</div>
 		<div id="page-body" role="main">
+			<g:if test="${flash.message}">
+		        <div class="message">${flash.message}</div>
+		    </g:if>
 			<table>
 				<g:each in="${questionList}" status="i" var="questionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						
 						<td>
-						<b style="color:blue; font-size: 9">${fieldValue(bean: questionInstance, field: "subject")}</b><br>
+						<b style="color:#046380; font-size: 9">${fieldValue(bean: questionInstance, field: "subject")}</b><br>
 						Author : ${fieldValue(bean: questionInstance, field: "author")}<br>
 						date : <g:formatDate date="${questionInstance.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
 						${fieldValue(bean: questionInstance, field: "message")}

@@ -39,7 +39,8 @@ html * {
 body {
 	background: #ffffff;
 	color: #333333;
-	margin: 0 auto;
+	margin:auto;
+	margin-top:40px;
 	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
@@ -73,7 +74,7 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #046380;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
@@ -476,7 +477,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	background: #CBD6DD;
 }
 
 /* PAGINATION */
@@ -594,3 +595,93 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+
+/* Perso */
+
+.topbar {
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+z-index: 1000;
+-webkit-box-shadow: 0 2px 3px rgba(0,0,0,.25);
+-moz-box-shadow: 0 2px 3px rgba(0,0,0,.25);
+box-shadow: 0 2px 3px rgba(0,0,0,.25);
+}
+
+#banners {
+width: auto;
+}
+
+.global-nav {
+position: relative;
+width: 100%;
+}
+
+.global-nav, .global-nav-outer {
+height: 40px;
+}
+
+.global-nav {
+background-position: 0 0;
+background-color: #252525;
+}
+
+.global-nav .container {
+width: 865px;
+}
+
+.container {
+position: relative;
+width: 837px;
+margin: 0 auto;
+}
+
+.logbar {
+	background-color: #252525;
+	padding: 0.3em 0.7em;
+	zoom: 1;
+}
+
+.logbar ul {
+	overflow: hidden;
+	padding-left: 0;
+	zoom: 1;
+}
+
+.logbar li {
+	display: block;
+	float: left;
+	list-style-type: none;
+	margin-right: 0.5em;
+	padding: 0;
+}
+
+.logbar a {
+	color: #666666;
+	display: block;
+	padding: 0.25em 0.7em;
+	text-decoration: none;
+	   -moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	        border-radius: 0.3em;
+}
+
+.logbar a:active, .logbar a:visited {
+	color: #666666;
+}
+
+.logbar a:focus, .logbar a:hover {
+	background-color: #046380;
+	color: #ffffff;
+	outline: none;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.no-borderradius .logbar a:focus, .no-borderradius .logbar a:hover {
+	background-color: transparent;
+	color: #444444;
+	text-decoration: underline;
+}
+
