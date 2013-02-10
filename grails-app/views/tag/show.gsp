@@ -23,6 +23,24 @@
 			</g:if>
 			<ol class="property-list tag">
 			
+				<g:if test="${tagInstance?.tagname}">
+				<li class="fieldcontain">
+					<span id="tagname-label" class="property-label"><g:message code="tag.tagname.label" default="Tagname" /></span>
+					
+						<span class="property-value" aria-labelledby="tagname-label"><g:fieldValue bean="${tagInstance}" field="tagname"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${tagInstance?.description}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="tag.description.label" default="Description" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${tagInstance}" field="description"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${tagInstance?.questions}">
 				<li class="fieldcontain">
 					<span id="questions-label" class="property-label"><g:message code="tag.questions.label" default="Questions" /></span>
@@ -30,15 +48,6 @@
 						<g:each in="${tagInstance.questions}" var="q">
 						<span class="property-value" aria-labelledby="questions-label"><g:link controller="question" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${tagInstance?.tagname}">
-				<li class="fieldcontain">
-					<span id="tagname-label" class="property-label"><g:message code="tag.tagname.label" default="Tagname" /></span>
-					
-						<span class="property-value" aria-labelledby="tagname-label"><g:fieldValue bean="${tagInstance}" field="tagname"/></span>
 					
 				</li>
 				</g:if>
