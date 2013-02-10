@@ -107,9 +107,9 @@ class TagController {
 			redirect(action: "list")
 			return
 		}
-		def taggedQuestionsList = tagInstance.questions.asList().
+		def taggedQuestionsList = tagInstance.questions.asList()
 		def taggedQuestionsNumber= tagInstance.questions.size()
-		[tagInstance: tagInstance, taggedQuestionsList: tagInstance.questions, taggedQuestions: tagInstance.questions.size()]
+		[tagInstance: tagInstance, taggedQuestionsList: tagInstance.questions, taggedQuestionsNumber: tagInstance.questions.size()]
 		/*params.max = Math.min(max ?: 10, 100)
 		[taggedQuestionsList: tagInstance.questions, taggedQuestions: tagInstance.questions.size()]*/
 	}
