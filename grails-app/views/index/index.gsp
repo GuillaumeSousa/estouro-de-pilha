@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="javax.servlet.jsp.tagext.Tag"%>
 <html>
 	<head>
 		<meta name="layout" content="main"/>
@@ -85,6 +86,18 @@
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
 			<h1>Recent Tags</h1>
+			<table>
+				<g:if test="${tagList}">			
+					<g:each in="${tagList}" var="t">
+						<tr>
+							<td>
+								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
+								x ${t.questions.size()}
+							</td>
+						</tr>
+					</g:each>
+				</g:if>
+			</table>
 		</div>
 		<div id="page-body" role="main">
 			<g:if test="${flash.message}">
@@ -105,6 +118,16 @@
 						${fieldValue(bean: questionInstance, field: "nbViews")} views<br>
 						${fieldValue(bean: questionInstance, field: "nbVotes")} votes
 						</td>
+					</tr>
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+						<td>
+							<g:if test="${questionInstance?.tags}">			
+								<g:each in="${questionInstance.tags}" var="t">
+								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
+								</g:each>
+							</g:if>
+						</td>
+						<td></td>
 					</tr>
 				</g:each>	
 			</table>				

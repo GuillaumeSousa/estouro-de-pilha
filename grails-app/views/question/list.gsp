@@ -26,6 +26,15 @@
 						${fieldValue(bean: questionInstance, field: "nbVotes")} votes
 						</td>
 					</tr>
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+						<td>
+							<g:if test="${questionInstance?.tags}">			
+								<g:each in="${questionInstance.tags}" var="t">
+								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
+								</g:each>
+							</g:if>
+						</td>
+					</tr>
 				</g:each>	
 			</table>				
 			<div class="pagination">

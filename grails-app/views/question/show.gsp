@@ -51,19 +51,24 @@
 						</li>
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<g:if test="${questionInstance?.tags}">
+						<li class="fieldcontain">				
+								<g:each in="${questionInstance.tags}" var="t">
+								<!-- <span class="property-value" aria-labelledby="tags-label"><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+								-->
+								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
+								</g:each>
+							
+						</li>
+						</g:if>
+					</td>
+				</tr>
 			</table>
 				
 			
-				<g:if test="${questionInstance?.tags}">
-				<li class="fieldcontain">
-					<span id="tags-label" class="property-label"><g:message code="question.tags.label" default="Tags" /></span>
-					
-						<g:each in="${questionInstance.tags}" var="t">
-						<span class="property-value" aria-labelledby="tags-label"><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
+				
 				
 				<g:if test="${questionInstance?.comments}">
 				<li class="fieldcontain">
