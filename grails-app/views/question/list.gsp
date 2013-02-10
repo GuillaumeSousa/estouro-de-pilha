@@ -15,8 +15,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						
 						<td>
-						<b style="color:#046380; font-size: 9">${fieldValue(bean: questionInstance, field: "subject")}</b><br>
-						Author : ${fieldValue(bean: questionInstance, field: "author")}<br>
+						<b style="color:#046380; font-size: 9"><g:link controller="Question" action="show" id="${questionInstance.id}">${fieldValue(bean: questionInstance, field: "subject")}</g:link></b><br>
+						Author : ${fieldValue(bean: questionInstance, field: "author.pseudo")}<br>
 						date : <g:formatDate date="${questionInstance.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
 						${fieldValue(bean: questionInstance, field: "message")}
 						</td>

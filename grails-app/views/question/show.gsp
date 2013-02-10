@@ -9,20 +9,58 @@
 	</head>
 	<body>
 		<a href="#show-question" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+
 		<div id="show-question" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1>
+				<g:if test="${questionInstance?.subject}">
+					<span class="property-value" aria-labelledby="subject-label"><g:fieldValue bean="${questionInstance}" field="subject"/></span>		
+				</g:if>	
+			</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list question">
 			
+				<g:if test="${questionInstance?.message}">	
+					<span class="property-value" aria-labelledby="message-label"><g:fieldValue bean="${questionInstance}" field="message"/></span>
+				</g:if>
+				
+				<div class="post-signature owner">
+					<g:if test="${questionInstance?.postedDate}">
+					<li class="fieldcontain">
+							<span class="property-value" aria-labelledby="postedDate-label"><g:formatDate date="${questionInstance?.postedDate}" format="dd/MM/yyyy - HH:mm" /></span>					
+					</li>
+					</g:if>
+					<g:if test="${questionInstance?.author}">
+					<li class="fieldcontain">
+							<g:link controller="User" action="show" id="${questionInstance.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${questionInstance}" field="author.pseudo"/></span></g:link>
+					</li>
+				</g:if>
+				</div>
+				
 			
+				<g:if test="${questionInstance?.tags}">
+				<li class="fieldcontain">
+					<span id="tags-label" class="property-label"><g:message code="question.tags.label" default="Tags" /></span>
+					
+						<g:each in="${questionInstance.tags}" var="t">
+						<span class="property-value" aria-labelledby="tags-label"><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${questionInstance?.comments}">
+				<li class="fieldcontain">
+					<span id="comments-label" class="property-label"><g:message code="question.comments.label" default="Comments" /></span>
+					
+						<g:each in="${questionInstance.comments}" var="c">
+						<span class="property-value" aria-labelledby="comments-label"><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+				
 				<g:if test="${questionInstance?.answers}">
 				<li class="fieldcontain">
 					<span id="answers-label" class="property-label"><g:message code="question.answers.label" default="Answers" /></span>
@@ -34,35 +72,8 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${questionInstance?.author}">
-				<li class="fieldcontain">
-					<span id="author-label" class="property-label"><g:message code="question.author.label" default="Author" /></span>
-					
-						<span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${questionInstance}" field="author"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.comments}">
-				<li class="fieldcontain">
-					<span id="comments-label" class="property-label"><g:message code="question.comments.label" default="Comments" /></span>
-					
-						<g:each in="${questionInstance.comments}" var="c">
-						<span class="property-value" aria-labelledby="comments-label"><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.message}">
-				<li class="fieldcontain">
-					<span id="message-label" class="property-label"><g:message code="question.message.label" default="Message" /></span>
-					
-						<span class="property-value" aria-labelledby="message-label"><g:fieldValue bean="${questionInstance}" field="message"/></span>
-					
-				</li>
-				</g:if>
-			
+							
+						
 				<g:if test="${questionInstance?.nbViews}">
 				<li class="fieldcontain">
 					<span id="nbViews-label" class="property-label"><g:message code="question.nbViews.label" default="Nb Views" /></span>
@@ -81,34 +92,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${questionInstance?.postedDate}">
-				<li class="fieldcontain">
-					<span id="postedDate-label" class="property-label"><g:message code="question.postedDate.label" default="Posted Date" /></span>
-					
-						<span class="property-value" aria-labelledby="postedDate-label"><g:formatDate date="${questionInstance?.postedDate}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.subject}">
-				<li class="fieldcontain">
-					<span id="subject-label" class="property-label"><g:message code="question.subject.label" default="Subject" /></span>
-					
-						<span class="property-value" aria-labelledby="subject-label"><g:fieldValue bean="${questionInstance}" field="subject"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.tags}">
-				<li class="fieldcontain">
-					<span id="tags-label" class="property-label"><g:message code="question.tags.label" default="Tags" /></span>
-					
-						<g:each in="${questionInstance.tags}" var="t">
-						<span class="property-value" aria-labelledby="tags-label"><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
+				
 			
 			</ol>
 			<g:form>
