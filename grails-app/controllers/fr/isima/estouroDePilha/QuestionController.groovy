@@ -6,6 +6,8 @@ class QuestionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def questionService
+	
 	def beforeInterceptor = [action:this.&auth, except:["index", "list", "show"]]
 	
 	  def auth() {
@@ -47,7 +49,7 @@ class QuestionController {
             redirect(action: "list")
             return
         }
-
+		questionService.incrViews(id)
         [questionInstance: questionInstance]
     }
 
@@ -109,4 +111,14 @@ class QuestionController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def incrVotes(long id){
+		questionService.incrVotes(id)
+		redirect(action: "show", id: id)
+	}
+	
+	def decrVotes(long id){
+		questionService.decrVotes(id)
+		redirect(action: "show", id: id)
+	}
 }

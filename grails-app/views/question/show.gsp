@@ -21,22 +21,37 @@
 			</g:if>
 			<ol class="property-list question">
 			
-				<g:if test="${questionInstance?.message}">	
-					<span class="property-value" aria-labelledby="message-label"><g:fieldValue bean="${questionInstance}" field="message"/></span>
-				</g:if>
-				
-				<div class="post-signature owner">
-					<g:if test="${questionInstance?.postedDate}">
-					<li class="fieldcontain">
-							<span class="property-value" aria-labelledby="postedDate-label"><g:formatDate date="${questionInstance?.postedDate}" format="dd/MM/yyyy - HH:mm" /></span>					
-					</li>
-					</g:if>
-					<g:if test="${questionInstance?.author}">
-					<li class="fieldcontain">
-							<g:link controller="User" action="show" id="${questionInstance.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${questionInstance}" field="author.pseudo"/></span></g:link>
-					</li>
-				</g:if>
-				</div>
+			<table>
+				<tr>
+					<td>
+						<g:remoteLink action="incrVotes" id="${questionInstance.id}"><g:img dir="images" file="arrow-up.png" width="40px" height="40px"/></g:remoteLink><br>
+						<span class="property-value" style="margin-left: 15px;" aria-labelledby="nbViews-label"><g:fieldValue bean="${questionInstance}" field="nbVotes"/></span><br>
+						<g:remoteLink action="decrVotes" id="${questionInstance.id}"><g:img dir="images" file="arrow-down.png" width="40px" height="40px"/></g:remoteLink>
+					</td>
+					<td>
+						<g:if test="${questionInstance?.message}">	
+							<span class="property-value" aria-labelledby="message-label"><g:fieldValue bean="${questionInstance}" field="message"/></span>
+						</g:if>
+						
+						<div class="post-signature owner">
+							<g:if test="${questionInstance?.postedDate}">
+							<li class="fieldcontain">
+									<span class="property-value" aria-labelledby="postedDate-label"><g:formatDate date="${questionInstance?.postedDate}" format="dd/MM/yyyy - HH:mm" /></span>					
+							</li>
+							</g:if>
+							<g:if test="${questionInstance?.author}">
+							<li class="fieldcontain">
+								<g:link controller="User" action="show" id="${questionInstance.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${questionInstance}" field="author.pseudo"/></span></g:link>
+							</li>
+						</g:if>
+						</div>
+						<li class="fieldcontain">
+							<span id="nbViews-label" class="property-label"><g:message code="question.nbViews.label" default="viewed" /></span>	
+							<span class="property-value" aria-labelledby="nbViews-label"><g:fieldValue bean="${questionInstance}" field="nbViews"/></span>
+						</li>
+					</td>
+				</tr>
+			</table>
 				
 			
 				<g:if test="${questionInstance?.tags}">
@@ -70,29 +85,7 @@
 						</g:each>
 					
 				</li>
-				</g:if>
-			
-							
-						
-				<g:if test="${questionInstance?.nbViews}">
-				<li class="fieldcontain">
-					<span id="nbViews-label" class="property-label"><g:message code="question.nbViews.label" default="Nb Views" /></span>
-					
-						<span class="property-value" aria-labelledby="nbViews-label"><g:fieldValue bean="${questionInstance}" field="nbViews"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.nbVotes}">
-				<li class="fieldcontain">
-					<span id="nbVotes-label" class="property-label"><g:message code="question.nbVotes.label" default="Nb Votes" /></span>
-					
-						<span class="property-value" aria-labelledby="nbVotes-label"><g:fieldValue bean="${questionInstance}" field="nbVotes"/></span>
-					
-				</li>
-				</g:if>
-			
-				
+				</g:if>				
 			
 			</ol>
 			<g:form>
