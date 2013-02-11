@@ -736,3 +736,8 @@ text-align: left;
 vertical-align: top;
 width: 200px;
 }
+
+input[type="submit"] {
+cursor: pointer;
+}
+

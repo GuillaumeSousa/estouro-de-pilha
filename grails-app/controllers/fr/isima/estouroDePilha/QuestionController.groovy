@@ -114,11 +114,20 @@ class QuestionController {
 	
 	def incrVotes(long id){
 		questionService.incrVotes(id)
-		redirect(action: "show", id: id)
+		render Question.get(id).nbVotes
+		//redirect(action: "show", id: id)
 	}
 	
 	def decrVotes(long id){
 		questionService.decrVotes(id)
+		render Question.get(id).nbVotes
+		//redirect(action: "show", id: id)
+	}
+	
+	def addAnswer(long id){
+		def question = Question.get(id)
+		def answer = new Answer(question: question, author: question.author, message:params.get("messageAnswer"))
+		question.addToAnswers(answer)
 		redirect(action: "show", id: id)
 	}
 }

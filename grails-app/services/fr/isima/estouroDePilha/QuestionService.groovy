@@ -20,4 +20,8 @@ class QuestionService {
 		def question = Question.get(id)
 		question.nbViews++
 	}
+	
+	def addAnswer(id,message){
+		
+	}
 }
