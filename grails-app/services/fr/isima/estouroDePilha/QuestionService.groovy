@@ -6,22 +6,24 @@ class QuestionService {
 
     }
 	
-	def incrVotes(id) {
+	def incrVotes(Long id) {
 		def question = Question.get(id)
 		question.nbVotes++
 	}
 	
-	def decrVotes(id){
+	def decrVotes(Long id){
 		def question = Question.get(id)
 		question.nbVotes--
 	}
 	
-	def incrViews(id){
+	def incrViews(Long id){
 		def question = Question.get(id)
 		question.nbViews++
 	}
 	
-	def addAnswer(id,message){
-		
+	def addAnswer(Long id, String message){
+		def question = Question.get(id)
+		def answer = new Answer(question: question, author: question.author, message: message)
+		question.addToAnswers(answer)
 	}
 }

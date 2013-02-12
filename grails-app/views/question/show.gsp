@@ -27,11 +27,11 @@
 						<div>
 							<g:remoteLink action="incrVotes" id="${questionInstance.id}" update="nbVotes">
 						        <g:img dir="images" file="arrow-up.png" width="40px" height="40px"/>
-						      </g:remoteLink>
-						        <div class="property-value" style="margin-left: 10px;" id="nbVotes">
-						          ${questionInstance.nbVotes}
-						        </div> 
-						      <g:remoteLink action="decrVotes" id="${questionInstance.id}" update="nbVotes">
+						     </g:remoteLink>
+						     <div class="property-value" style="margin-left: 10px;" id="nbVotes">
+						     	${questionInstance.nbVotes}
+						     </div> 
+						     <g:remoteLink action="decrVotes" id="${questionInstance.id}" update="nbVotes">
 						        <g:img dir="images" file="arrow-down.png" width="40px" height="40px"/>
 						     </g:remoteLink>
 					    </div>
@@ -85,10 +85,12 @@
 			</li>
 			</g:if>
 				
+
+			
 			<g:if test="${questionInstance?.answers}">
 			<li class="fieldcontain">
 				<table>
-					<g:each in="${questionInstance.answers}" var="a">
+					<g:each in="${questionInstance.answers}" var="a" id="answers">
 						<tr>
 							<td>
 								${fieldValue(bean: a, field: "message")}
@@ -97,7 +99,7 @@
 					</g:each>
 				</table>
 			</li>
-			</g:if>				
+			</g:if>		
 			
 			<h1>
 				<span class="property-value" aria-labelledby="subject-label">Your Answer</span>		
@@ -105,7 +107,7 @@
 			
 			<g:form controller="question" action="addAnswer" id="${questionInstance.id}">	
 		        <g:textArea class="property-value" style="width:90%; height:200px;" name="messageAnswer" id="messageAnswer"/>
-		        <g:submitButton name="postAnswer" style="background-color: #4a6b82; color:white;" value="Post Your Answer" />
+		        <g:submitButton update="answers" name="postAnswer" style="background-color: #4a6b82; color:white;" value="Post Your Answer" />
 		    </g:form>	
 		    
 			</ol>
