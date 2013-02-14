@@ -7,7 +7,7 @@
 	</head>
 	
 	<body>
-	  <div class="body">
+	  <div>
 		  <div class="excerpt">${fieldValue(bean: tagInstance, field: "description")}
 		  </div>
 		  <div >

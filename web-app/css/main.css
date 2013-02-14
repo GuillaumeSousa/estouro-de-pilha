@@ -727,6 +727,19 @@ margin: 0 auto;
 }
 }
 #tags-browser tr:last-child td { border-bottom: none !important; }
+
+.sumtagdesc
+{
+	padding:5px !important;
+	color:#333 !important;
+	line-height:130% !important;
+	overflow:hidden !important;
+	margin-bottom:8px !important;
+	border:3px solid #eee !important;
+}
+
+
+/* Questions style */
 .owner {
 background-color: #e0eaf1;
 }
