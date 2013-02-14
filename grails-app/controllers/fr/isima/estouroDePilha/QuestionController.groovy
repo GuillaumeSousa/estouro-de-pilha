@@ -112,13 +112,19 @@ class QuestionController {
         }
     }
 	
-	def incrVotes(long id){
+	def incrVotes(Long id){
 		questionService.incrVotes(id)
-		redirect(action: "show", id: id)
+		render Question.get(id).nbVotes
 	}
 	
-	def decrVotes(long id){
+	def decrVotes(Long id){
 		questionService.decrVotes(id)
+		render Question.get(id).nbVotes
+	}
+	
+	def addAnswer(Long id){
+		questionService.addAnswer(id, params.get("messageAnswer"))
+		//render Question.get(id).answers
 		redirect(action: "show", id: id)
 	}
 }

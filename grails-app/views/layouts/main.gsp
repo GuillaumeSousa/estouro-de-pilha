@@ -16,7 +16,8 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<!--<link rel="stylesheet" href="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/css/bootstrap.css"> -->
 		<g:layoutHead/>
-		<r:layoutResources />
+		<g:javascript library="jquery"/>
+		<r:layoutResources/>
 	</head>
 	<body>
 		<div id="header" role="banner">
