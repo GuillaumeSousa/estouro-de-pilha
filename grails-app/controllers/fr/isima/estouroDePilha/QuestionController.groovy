@@ -5,7 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class QuestionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	
 	def questionService
 	
 	def beforeInterceptor = [action:this.&auth, except:["index", "list", "show"]]
@@ -23,7 +23,7 @@ class QuestionController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [questionInstanceList: Question.list(params), questionInstanceTotal: Question.count()]
+        [questionInstanceList: Question.list(params).sort{it.postedDate}.reverse(), questionInstanceTotal: Question.count()]
     }
 
     def create() {
@@ -112,19 +112,17 @@ class QuestionController {
         }
     }
 	
-	def incrVotes(Long id){
-		questionService.incrVotes(id)
-		render Question.get(id).nbVotes
-	}
-	
-	def decrVotes(Long id){
-		questionService.decrVotes(id)
-		render Question.get(id).nbVotes
-	}
-	
+
 	def addAnswer(Long id){
 		questionService.addAnswer(id, params.get("messageAnswer"))
-		//render Question.get(id).answers
 		redirect(action: "show", id: id)
+	}
+	
+	def sortAnswersByDate(Long id){
+		render template: '/answer/listAnswers', var: 'answer', collection: Answer.findAllByQuestion(Question.get(id), [sort: 'postedDate', order:'desc'])
+	}
+	
+	def sortAnswersByVotes(Long id){	
+		render template: '/answer/listAnswers', var: 'answer', collection: Answer.findAllByQuestion(Question.get(id), [sort: 'nbVotes', order:'desc'])
 	}
 }

@@ -103,34 +103,10 @@
 			<g:if test="${flash.message}">
 		        <div class="message">${flash.message}</div>
 		    </g:if>
-			<table>
-				<g:each in="${questionList}" status="i" var="questionInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						
-						<td>
-						<b style="color:#046380; font-size: 9"><g:link controller="Question" action="show" id="${questionInstance.id}">${fieldValue(bean: questionInstance, field: "subject")}</g:link></b><br>
-						Author : ${fieldValue(bean: questionInstance, field: "author.pseudo")}<br>
-						date : <g:formatDate date="${questionInstance.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
-						${fieldValue(bean: questionInstance, field: "message")}
-						</td>
-											
-						<td><br>
-						${fieldValue(bean: questionInstance, field: "nbViews")} views<br>
-						${fieldValue(bean: questionInstance, field: "nbVotes")} votes
-						</td>
-					</tr>
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td>
-							<g:if test="${questionInstance?.tags}">			
-								<g:each in="${questionInstance.tags}" var="t">
-								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
-								</g:each>
-							</g:if>
-						</td>
-						<td></td>
-					</tr>
-				</g:each>	
-			</table>				
+			<!-- List questions -->
+		    <div id="questions">
+    				<g:render template="/question/listQuestions" var="question" collection="${questionList}"/>
+			</div>		
 			<div class="pagination">
 				<g:paginate total="${questionNumber}" />
 			</div>

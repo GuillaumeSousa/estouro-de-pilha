@@ -25,15 +25,9 @@
 				<tr>
 					<td>
 						<div>
-							<g:remoteLink action="incrVotes" id="${questionInstance.id}" update="nbVotes">
-						        <g:img dir="images" file="arrow-up.png" width="40px" height="40px"/>
-						     </g:remoteLink>
-						     <div class="property-value" style="margin-left: 10px;" id="nbVotes">
-						     	${questionInstance.nbVotes}
-						     </div> 
-						     <g:remoteLink action="decrVotes" id="${questionInstance.id}" update="nbVotes">
-						        <g:img dir="images" file="arrow-down.png" width="40px" height="40px"/>
-						     </g:remoteLink>
+							<div id="post-${questionInstance.id}">
+						      <g:render template="/post/votes" model="[post:questionInstance]"/>
+						    </div>
 					    </div>
 					</td>
 					<td>
@@ -51,7 +45,7 @@
 							<li class="fieldcontain">
 								<g:link controller="User" action="show" id="${questionInstance.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${questionInstance}" field="author.pseudo"/></span></g:link>
 							</li>
-						</g:if>
+							</g:if>
 						</div>
 						<li class="fieldcontain">
 							<span id="nbViews-label" class="property-label"><g:message code="question.nbViews.label" default="viewed" /></span>	
@@ -64,9 +58,7 @@
 						<g:if test="${questionInstance?.tags}">
 						<li class="fieldcontain">				
 							<g:each in="${questionInstance.tags}" var="t">
-							<!-- <span class="property-value" aria-labelledby="tags-label"><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-							-->
-							<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
+								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
 							</g:each>
 						</li>
 						</g:if>
@@ -84,23 +76,27 @@
 				
 			</li>
 			</g:if>
-				
-
 			
+			<!-- Buttons to sort answers -->
 			<g:if test="${questionInstance?.answers}">
-			<li class="fieldcontain">
-				<table>
-					<g:each in="${questionInstance.answers}" var="a" id="answers">
-						<tr>
-							<td>
-								${fieldValue(bean: a, field: "message")}
-							</td>
-						</tr>
-					</g:each>
-				</table>
-			</li>
+				<div style="float: right;">
+					<g:remoteLink controller="question" action="sortAnswersByDate" id="${questionInstance?.id}" update="answers">oldest</g:remoteLink>
+					<g:remoteLink controller="question" action="sortAnswersByVotes" id="${questionInstance?.id}" update="answers">votes</g:remoteLink>
+				</div>
+				<h1>
+					${questionInstance.answers.size()} Answers
+				</h1>
+				
+				<!-- List answers -->
+				<li class="fieldcontain">
+				    <div id="answers">
+	     				<g:render template="/answer/listAnswers" var="answer" collection="${questionInstance.answers}"/>
+					</div>
+				</li>
 			</g:if>		
 			
+			
+			<!-- Form to answer the question -->
 			<h1>
 				<span class="property-value" aria-labelledby="subject-label">Your Answer</span>		
 			</h1>

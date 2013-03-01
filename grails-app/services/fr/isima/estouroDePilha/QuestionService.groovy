@@ -2,20 +2,6 @@ package fr.isima.estouroDePilha
 
 class QuestionService {
 
-    def serviceMethod() {
-
-    }
-	
-	def incrVotes(Long id) {
-		def question = Question.get(id)
-		question.nbVotes++
-	}
-	
-	def decrVotes(Long id){
-		def question = Question.get(id)
-		question.nbVotes--
-	}
-	
 	def incrViews(Long id){
 		def question = Question.get(id)
 		question.nbViews++
