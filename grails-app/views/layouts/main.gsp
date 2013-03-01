@@ -28,6 +28,7 @@
 	            	<div class="logbar">
 						<ul>
 							<li><g:loginControl/></li>
+							<li><g:profileControl/></li>
 						</ul>
 					</div>
 	              </div>

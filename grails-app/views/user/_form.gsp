@@ -3,7 +3,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'login', 'error')} required">
 	<label for="login">
-		<g:message code="user.login.label" default="Login" />
+		<g:message code="user.login.label" default="Login (email address)" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field type="email" name="login" required="" value="${userInstance?.login}"/>
@@ -24,6 +24,15 @@
 	</label>
 	<g:textField name="pseudo" value="${userInstance?.pseudo}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'realName', 'error')} ">
+	<label for="realName">
+		<g:message code="user.realName.label" default="Real Name" />
+		
+	</label>
+	<g:textField name="realName" value="${userInstance?.realName}"/>
+</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'birthDate', 'error')} required">
 	<label for="birthDate">
@@ -48,4 +57,13 @@
 	</label>
 	<g:textField name="location" value="${userInstance?.location}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'aboutMe', 'error')} ">
+	<label for="aboutMe">
+		<g:message code="user.aboutMe.label" default="About Me" />
+		
+	</label>
+	<g:textArea name="aboutMe" value="${userInstance?.aboutMe}"/>
+</div>
+
 

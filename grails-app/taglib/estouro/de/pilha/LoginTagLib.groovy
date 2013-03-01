@@ -9,5 +9,18 @@ class LoginTagLib {
       out << """${link(action:"login", controller:"user"){"Login"}}"""      
     }
   }
+  def profileControl = {
+	  if(session.user){
+		out << """${link(action:"accessProfile", controller:"user"){session.user.pseudo}}"""
+    } else {  
+	  // nothing to show if no user is connected  
+	}
+  }
   
+  def editUserControl = { attrs, body ->
+	  if(session.user.id == attrs.shownUserId){ 
+		  out << """${link(action:"edit", controller:"user", params:[id:session.user.id]){"Edit"}}"""
+	  } 
+  }
+	  
 }

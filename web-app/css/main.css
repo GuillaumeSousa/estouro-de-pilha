@@ -720,11 +720,19 @@ margin: 0 auto;
     padding-top: 6px !important;
     vertical-align: top !important;
 }
+.tag-shortdesc
+{
+	padding:5px;
+	color:#333;
+	line-height:130%;
+	overflow:hidden;
+	margin-bottom:8px;
+	border:3px solid #eee;
+}
 .tag-unit
 {
 	padding-right: 1.25em;
 	width: 230px	
-}
 }
 #tags-browser tr:last-child td { border-bottom: none !important; }
 

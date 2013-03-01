@@ -119,4 +119,14 @@ class UserController {
 	  session.user = null
 	  redirect(controller:"index")
 	}
+	
+	def accessProfile = {
+		def user = session.user
+		if(!user){
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), user.id])
+            redirect(action: "list")
+            return
+		}
+		redirect(action: "show", id: user.id)
+	}
 }

@@ -8,8 +8,18 @@
 	
 	<body>
 	  <div>
-		  <div class="excerpt">${fieldValue(bean: tagInstance, field: "description")}
+	  
+	  	  <div style="clear:both">
+		  	  <div class="tag-shortdesc" style="margin-top: 10px;">
+			    <div>
+			    	<p>${fieldValue(bean: tagInstance, field: "description")}</p>
+				    <p style="margin-bottom: 0;">
+				    <g:link action="show" id="${tagInstance.id}">Learn more...</g:link>
+				    </p>
+			    </div>
+			  </div>
 		  </div>
+		
 		  <div >
 		  	<table>
 				<g:each in="${taggedQuestionsList}" status="i" var="questionInstance">

@@ -34,7 +34,10 @@
 				<g:each in="${badgeInstanceList}" status="i" var="badgeInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${badgeInstance.id}">${fieldValue(bean: badgeInstance, field: "badgeName")}</g:link></td>
+						<td>
+							<g:link action="show" id="${badgeInstance.id}">${fieldValue(bean: badgeInstance, field: "badgeName")}</g:link>
+							&nbsp;x ${badgeInstance.users.size()}
+						</td>
 					
 						<td>${fieldValue(bean: badgeInstance, field: "description")}</td>
 					
