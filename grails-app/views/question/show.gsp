@@ -65,20 +65,15 @@
 					</td>
 				</tr>
 			</table>
-							
+			
+			<g:link url="[controller: 'comment', action: 'create', params: [postId: questionInstance.id]]">add a comment</g:link><br><br>			
 			<g:if test="${questionInstance?.comments}">
-			<li class="fieldcontain">
-				<span id="comments-label" class="property-label"><g:message code="question.comments.label" default="Comments" /></span>
-				
-					<g:each in="${questionInstance.comments}" var="c">
-					<span class="property-value" aria-labelledby="comments-label"><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-					</g:each>
-				
-			</li>
+				<g:render template="/comment/listComments" var="comment" collection="${questionInstance.comments}"/>
 			</g:if>
 			
-			<!-- Buttons to sort answers -->
+			
 			<g:if test="${questionInstance?.answers}">
+				<!-- Buttons to sort answers -->
 				<div style="float: right;">
 					<g:remoteLink controller="question" action="sortAnswersByDate" id="${questionInstance?.id}" update="answers">oldest</g:remoteLink>
 					<g:remoteLink controller="question" action="sortAnswersByVotes" id="${questionInstance?.id}" update="answers">votes</g:remoteLink>
@@ -105,8 +100,8 @@
 		        <g:textArea class="property-value" style="width:90%; height:200px;" name="messageAnswer" id="messageAnswer"/>
 		        <g:submitButton update="answers" name="postAnswer" style="background-color: #4a6b82; color:white;" value="Post Your Answer" />
 		    </g:form>	
-		    
 			</ol>
+			
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${questionInstance?.id}" />

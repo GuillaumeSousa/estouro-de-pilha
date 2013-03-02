@@ -44,7 +44,7 @@
 				<li class="fieldcontain">
 					<span id="birthDate-label" class="property-label"><g:message code="user.birthDate.label" default="Birth Date" /></span>
 					
-						<span class="property-value" aria-labelledby="birthDate-label"><g:formatDate date="${userInstance?.birthDate}" /></span>
+						<span class="property-value" aria-labelledby="birthDate-label"><g:formatDate date="${userInstance?.birthDate}" format="dd/MM/yyyy" /></span>
 					
 				</li>
 				</g:if>
@@ -82,11 +82,20 @@
 				<li class="fieldcontain">
 					<span id="registerDate-label" class="property-label"><g:message code="user.registerDate.label" default="Register Date" /></span>
 					
-						<span class="property-value" aria-labelledby="registerDate-label"><g:formatDate date="${userInstance?.registerDate}" /></span>
+						<span class="property-value" aria-labelledby="registerDate-label"><g:formatDate date="${userInstance?.registerDate}" format="dd/MM/yyyy"/></span>
 					
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.reputation}">
+				<li class="fieldcontain">
+					<span id="reputation-label" class="property-label"><g:message code="user.reputation.label" default="Reputation" /></span>
+					
+						<span class="property-value" aria-labelledby="reputation-label"><g:fieldValue bean="${userInstance}" field="reputation"/></span>
+					
+				</li>
+				</g:if>
+				
 				<g:if test="${userInstance?.reputation}">
 				<li class="fieldcontain">
 					<span id="reputation-label" class="property-label"><g:message code="user.reputation.label" default="Reputation" /></span>

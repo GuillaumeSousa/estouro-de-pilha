@@ -32,6 +32,7 @@ class QuestionController {
 
     def save() {
         def questionInstance = new Question(params)
+		questionInstance.postedDate = Calendar.instance.time
 		questionInstance.author = User.findByPseudo(session.user.pseudo)
         if (!questionInstance.save(flush: true)) {
             render(view: "create", model: [questionInstance: questionInstance])
