@@ -1,5 +1,7 @@
 package fr.isima.estouroDePilha
 
+import java.util.logging.Logger;
+
 class BadgeService {
 
     def checkAutobiographerBadge(Long id){
@@ -32,5 +34,38 @@ class BadgeService {
 				completeUser.addToBadges(critic)
 			}
 		}
+	}
+	
+	def incrReputationOfAuthor(Long postId)
+	{
+		Post post = Post.get(postId)
+		User author = User.get(post.author.id)
+		
+		log.debug("Method setReputationOfAuthor")
+		
+		if(post instanceof Question){
+			log.debug("Post is a question")
+			author.reputation += 5
+		}
+		if(post instanceof Answer){
+			log.debug("Post is an answer")
+			author.reputation += 10
+		}
+		
+	}
+	
+	def decrReputationOfAuthor(Long postId, Long voterId)
+	{
+		Post post = Post.get(postId)
+		User author = User.get(post.author.id)
+		User voter = User.get(voterId)
+		
+		author.reputation -= 2		
+		voter.reputation -= 1
+	}
+	
+	def checkAnswerBadges(Long postId)
+	{
+		
 	}
 }
