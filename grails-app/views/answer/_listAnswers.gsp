@@ -19,16 +19,16 @@
 				</li>
 				
 				<li class="fieldcontain">
-					<g:link controller="User" action="show" id="${answer.question.author.id}">
-						<span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${answer}" field="question.author.pseudo"/>
+					<g:link controller="User" action="show" id="${answer.author.id}">
+						<span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${answer}" field="author.pseudo"/>
 						</span>
 					</g:link>
 				</li>
 			</div>
 			<br>
 			<g:link url="[controller: 'comment', action: 'create', params: [postId: answer.id]]">add a comment</g:link><br><br>			
-				<g:if test="${answer?.comments}">
-					<g:render template="/comment/listComments" model="[comments : answer.comments]"></g:render>
+			<g:if test="${answer?.comments}">
+				<g:render template="/comment/listComments" model="[comments : answer.comments.sort{it.postedDate}]"></g:render>
 			</g:if>
 		</td>
 	</tr>

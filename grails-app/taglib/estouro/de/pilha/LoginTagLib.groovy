@@ -9,6 +9,7 @@ class LoginTagLib {
       out << """${link(action:"login", controller:"user"){"Login"}}"""      
     }
   }
+  
   def profileControl = {
 	  if(session.user){
 		out << """${link(action:"accessProfile", controller:"user"){session.user.pseudo}}"""
@@ -18,9 +19,18 @@ class LoginTagLib {
   }
   
   def editUserControl = { attrs, body ->
-	  if(session.user.id == attrs.shownUserId){ 
-		  out << """${link(action:"edit", controller:"user", params:[id:session.user.id]){"Edit"}}"""
+	  if(session.user){
+		  if(session.user.id == attrs.shownUserId){ 
+			  out << """${link(action:"edit", controller:"user", params:[id:session.user.id]){"Edit"}}"""
+		  }
 	  } 
   }
 	  
+  def editQuestionControl = { attrs, body ->
+	  if(session.user){
+		  if(session.user.id == attrs.authorId){
+			  out << """${link(action:"edit", controller:"question", params:[id:attrs.questionId]){"Edit"}}"""
+		  } 
+	  }
+  }
 }

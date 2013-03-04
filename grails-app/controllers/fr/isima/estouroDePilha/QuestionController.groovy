@@ -51,7 +51,7 @@ class QuestionController {
         }
 		questionService.incrViews(id)
 		questionInstance.answers.sort{it.postedDate}.reverse()
-        [questionInstance: questionInstance,  answers: questionInstance.answers.sort{it.postedDate}, tags: questionInstance.tags.sort{it.tagname}]
+        [questionInstance: questionInstance]
     }
 
     def edit(Long id) {
@@ -115,7 +115,7 @@ class QuestionController {
 	
 
 	def addAnswer(Long id){
-		questionService.addAnswer(id, params.get("messageAnswer"))
+		questionService.addAnswer(id, params.get("messageAnswer"),session.user.id)
 		redirect(action: "show", id: id)
 	}
 	
