@@ -28,7 +28,7 @@ class LoginTagLib {
 	  
   def editQuestionControl = { attrs, body ->
 	  if(session.user){
-		  if(session.user.id == attrs.authorId){
+		  if(session.user.id == attrs.authorId || session.user.role == "admin"){
 			  out << """${link(action:"edit", controller:"question", params:[id:attrs.questionId]){"Edit"}}"""
 		  } 
 	  }

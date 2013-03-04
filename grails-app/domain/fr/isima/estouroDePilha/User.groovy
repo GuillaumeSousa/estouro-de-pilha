@@ -15,6 +15,7 @@ class User {
 	String aboutMe
 	Date registerDate = Calendar.instance.time
 	int reputation = 0
+	String role= "author"
 	
 	static hasMany = [badges : Badge]
 	
@@ -27,5 +28,6 @@ class User {
 		location(nullable:true)
 		birthDate(max:new Date())
 		aboutMe(nullable:true, maxSize:10000)
+		role(inList:["author", "admin"])
     }
 }

@@ -8,6 +8,14 @@ class BootStrap {
 		// Mock Users
 		if(!User.count()) { // Check whether the test data already exists.
 			new User(
+				login:"admin@groovyrocks.com",
+				password:"adminadmin",
+				pseudo:"admin",
+				realName:"Administrator",
+				role:"admin",
+				birthDate : Date.parse("yyyy-MM-dd", "2000-01-01")
+				).save(failOnError: true)
+			new User(
 				login: "mylene@jaimelegrails.com",
 				password: "mimimimi",
 				pseudo: "Mylene",
