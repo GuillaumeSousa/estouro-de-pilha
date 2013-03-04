@@ -13,9 +13,9 @@
 			
 			<div class="post-signature owner">
 				<li class="fieldcontain">
-						<span class="property-value" aria-labelledby="postedDate-label">
-							<g:formatDate date="${answer.question.postedDate}" format="dd/MM/yyyy - HH:mm" />
-						</span>					
+					<span class="property-value" aria-labelledby="postedDate-label">
+						<g:formatDate date="${answer.postedDate}" format="dd/MM/yyyy - HH:mm" />
+					</span>					
 				</li>
 				
 				<li class="fieldcontain">

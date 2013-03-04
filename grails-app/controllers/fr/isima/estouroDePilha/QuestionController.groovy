@@ -32,7 +32,6 @@ class QuestionController {
 
     def save() {
         def questionInstance = new Question(params)
-		questionInstance.postedDate = Calendar.instance.time
 		questionInstance.author = User.findByPseudo(session.user.pseudo)
         if (!questionInstance.save(flush: true)) {
             render(view: "create", model: [questionInstance: questionInstance])
@@ -120,7 +119,7 @@ class QuestionController {
 	}
 	
 	def sortAnswersByDate(Long id){
-		render template: '/answer/listAnswers', var: 'answer', collection: Answer.findAllByQuestion(Question.get(id), [sort: 'postedDate', order:'desc'])
+		render template: '/answer/listAnswers', var: 'answer', collection: Answer.findAllByQuestion(Question.get(id), [sort: 'postedDate', order:'asc'])
 	}
 	
 	def sortAnswersByVotes(Long id){	
