@@ -28,4 +28,16 @@ class User {
 		birthDate(max:new Date())
 		aboutMe(nullable:true, maxSize:10000)
     }
+	
+	def hasTheBadge(String badgeName) {
+		def badgeList = badges.toList();
+		def hasTheBadge = false;
+		for(Badge badge : badgeList) {
+			if(badge.badgeName.equals(badgeName)) {
+				hasTheBadge = true;
+				break;
+			}
+		}
+		hasTheBadge
+	}
 }
