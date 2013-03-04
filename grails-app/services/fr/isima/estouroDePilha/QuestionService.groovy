@@ -9,7 +9,7 @@ class QuestionService {
 	
 	def addAnswer(Long id, String message){
 		def question = Question.get(id)
-		def answer = new Answer(question: question, author: question.author, message: message)
+		def answer = new Answer(question: question, author: question.author, message: message, postedDate : Calendar.instance.time)
 		question.addToAnswers(answer)
 	}
 }

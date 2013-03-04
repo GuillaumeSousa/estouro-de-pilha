@@ -10,7 +10,7 @@
 		</td> 
 		<td>
 			${answer.message}
-
+			
 			<div class="post-signature owner">
 				<li class="fieldcontain">
 						<span class="property-value" aria-labelledby="postedDate-label">
@@ -25,6 +25,11 @@
 					</g:link>
 				</li>
 			</div>
+			<br>
+			<g:link url="[controller: 'comment', action: 'create', params: [postId: answer.id]]">add a comment</g:link><br><br>			
+				<g:if test="${answer?.comments}">
+					<g:render template="/comment/listComments" var="comment" collection="${answer.comments}"/>
+			</g:if>
 		</td>
 	</tr>
 	
