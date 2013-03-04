@@ -3,7 +3,7 @@
 
 <table>
 	<tr>
-		<td>
+		<td width="15%;">
 			<div id="post-${answer.id}">
 			      <g:render template="/post/votes" model="[post:answer]"/>
 		    </div>
@@ -28,7 +28,7 @@
 			<br>
 			<g:link url="[controller: 'comment', action: 'create', params: [postId: answer.id]]">add a comment</g:link><br><br>			
 				<g:if test="${answer?.comments}">
-					<g:render template="/comment/listComments" var="comment" collection="${answer.comments}"/>
+					<g:render template="/comment/listComments" model="[comments : answer.comments]"></g:render>
 			</g:if>
 		</td>
 	</tr>

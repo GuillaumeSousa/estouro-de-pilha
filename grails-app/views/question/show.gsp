@@ -23,7 +23,7 @@
 			
 			<table>
 				<tr>
-					<td>
+					<td width="15%;">
 						<div>
 							<div id="post-${questionInstance.id}">
 						      <g:render template="/post/votes" model="[post:questionInstance]"/>
@@ -54,10 +54,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td colspan="2">
 						<g:if test="${questionInstance?.tags}">
 						<li class="fieldcontain">				
-							<g:each in="${questionInstance.tags}" var="t">
+							<g:each in="${tags}" var="t">
 								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
 							</g:each>
 						</li>
@@ -68,26 +68,25 @@
 			
 			<g:link url="[controller: 'comment', action: 'create', params: [postId: questionInstance.id]]">add a comment</g:link><br><br>			
 			<g:if test="${questionInstance?.comments}">
-				<g:render template="/comment/listComments" var="comment" collection="${questionInstance.comments}"/>
+				<!--<g:render template="/comment/listComments" var="comment" collection="${questionInstance.comments}"/>-->
+				<g:render template="/comment/listComments" model="[comments : questionInstance.comments]"></g:render>
 			</g:if>
 			
 			
 			<g:if test="${questionInstance?.answers}">
 				<!-- Buttons to sort answers -->
-				<div style="float: right;">
+				<div class="buttons" style="float: right;">
 					<g:remoteLink controller="question" action="sortAnswersByDate" id="${questionInstance?.id}" update="answers">oldest</g:remoteLink>
 					<g:remoteLink controller="question" action="sortAnswersByVotes" id="${questionInstance?.id}" update="answers">votes</g:remoteLink>
 				</div>
 				<h1>
 					${questionInstance.answers.size()} Answers
 				</h1>
-				
+				<br>
 				<!-- List answers -->
-				<li class="fieldcontain">
-				    <div id="answers">
-	     				<g:render template="/answer/listAnswers" var="answer" collection="${questionInstance.answers}"/>
-					</div>
-				</li>
+			    <div id="answers">
+     				<g:render template="/answer/listAnswers" var="answer" collection="${answers}"/>
+				</div>
 			</g:if>		
 			
 			
