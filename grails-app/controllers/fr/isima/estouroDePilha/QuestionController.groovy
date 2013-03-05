@@ -9,13 +9,13 @@ class QuestionController {
 	def questionService
 	
 	def beforeInterceptor = [action:this.&auth, except:["index", "list", "show"]]
-	
-	  def auth() {
+		
+	def auth() {
 		if(!session.user) {
-		  redirect(controller:"user", action:"login")
-		  return false
+			redirect(controller:"user", action:"login")
+			return false
 		}
-	  }
+	}
 	  
     def index() {
         redirect(action: "list", params: params)
@@ -32,7 +32,6 @@ class QuestionController {
 
     def save() {
         def questionInstance = new Question(params)
-		questionInstance.postedDate = Calendar.instance.time
 		questionInstance.author = User.findByPseudo(session.user.pseudo)
         if (!questionInstance.save(flush: true)) {
             render(view: "create", model: [questionInstance: questionInstance])
@@ -51,6 +50,7 @@ class QuestionController {
             return
         }
 		questionService.incrViews(id)
+		questionInstance.answers.sort{it.postedDate}.reverse()
         [questionInstance: questionInstance]
     }
 
@@ -103,6 +103,8 @@ class QuestionController {
         }
 
         try {
+			questionInstance.answers.clear()
+			questionInstance.comments.clear()
             questionInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'question.label', default: 'Question'), id])
             redirect(action: "list")
@@ -115,15 +117,39 @@ class QuestionController {
 	
 
 	def addAnswer(Long id){
-		questionService.addAnswer(id, params.get("messageAnswer"))
+		questionService.addAnswer(id, params.get("messageAnswer"),session.user.id)
 		redirect(action: "show", id: id)
 	}
 	
 	def sortAnswersByDate(Long id){
-		render template: '/answer/listAnswers', var: 'answer', collection: Answer.findAllByQuestion(Question.get(id), [sort: 'postedDate', order:'desc'])
+		render template: '/answer/listAnswers', var: 'answer', collection: Answer.findAllByQuestion(Question.get(id), [sort: 'postedDate', order:'asc'])
 	}
 	
 	def sortAnswersByVotes(Long id){	
 		render template: '/answer/listAnswers', var: 'answer', collection: Answer.findAllByQuestion(Question.get(id), [sort: 'nbVotes', order:'desc'])
+	}
+	
+	def deleteComment(Long id){
+		def comment = Comment.get(id)
+		def post = comment.post
+		comment.delete(flush: true)
+		
+		if(comment.post.getClass() == Question.class)
+		{
+			redirect(controller:"question", action: "show", id: post.id)
+		}
+		else if (comment.post.getClass() == Answer.class)
+		{
+			redirect(controller:"question", action: "show", id: post.question.id)
+		}
+	}
+	
+	def deleteAnswer(Long id){
+		def answer = Answer.get(id)
+		def question = answer.question
+				
+		answer.comments.clear()
+		answer.delete(flush: true)
+		redirect(action: "show", id: question.id)
 	}
 }

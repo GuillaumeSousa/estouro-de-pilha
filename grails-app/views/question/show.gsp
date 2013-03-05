@@ -23,7 +23,7 @@
 			
 			<table>
 				<tr>
-					<td>
+					<td width="15%;">
 						<div>
 							<div id="post-${questionInstance.id}">
 						      <g:render template="/post/votes" model="[post:questionInstance]"/>
@@ -54,10 +54,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td colspan="2">
 						<g:if test="${questionInstance?.tags}">
 						<li class="fieldcontain">				
-							<g:each in="${questionInstance.tags}" var="t">
+							<g:each in="${questionInstance.tags.sort{it.tagname}}" var="t">
 								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
 							</g:each>
 						</li>
@@ -68,26 +68,24 @@
 			
 			<g:link url="[controller: 'comment', action: 'create', params: [postId: questionInstance.id]]">add a comment</g:link><br><br>			
 			<g:if test="${questionInstance?.comments}">
-				<g:render template="/comment/listComments" var="comment" collection="${questionInstance.comments}"/>
+				<g:render template="/comment/listComments" model="[comments : questionInstance.comments.sort{it.postedDate}]"></g:render>
 			</g:if>
 			
 			
 			<g:if test="${questionInstance?.answers}">
 				<!-- Buttons to sort answers -->
-				<div style="float: right;">
+				<div class="buttons" style="float: right;">
 					<g:remoteLink controller="question" action="sortAnswersByDate" id="${questionInstance?.id}" update="answers">oldest</g:remoteLink>
 					<g:remoteLink controller="question" action="sortAnswersByVotes" id="${questionInstance?.id}" update="answers">votes</g:remoteLink>
 				</div>
 				<h1>
 					${questionInstance.answers.size()} Answers
 				</h1>
-				
+				<br>
 				<!-- List answers -->
-				<li class="fieldcontain">
-				    <div id="answers">
-	     				<g:render template="/answer/listAnswers" var="answer" collection="${questionInstance.answers}"/>
-					</div>
-				</li>
+			    <div id="answers">
+     				<g:render template="/answer/listAnswers" var="answer" collection="${questionInstance.answers.sort{it.postedDate}}"/>
+				</div>
 			</g:if>		
 			
 			
@@ -105,8 +103,7 @@
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${questionInstance?.id}" />
-					<g:link class="edit" action="edit" id="${questionInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:editQuestionControl authorId="${questionInstance.author?.id}" questionId="${questionInstance.id}"/>
 				</fieldset>
 			</g:form>
 		</div>

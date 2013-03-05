@@ -105,7 +105,7 @@
 		    </g:if>
 			<!-- List questions -->
 		    <div id="questions">
-    				<g:render template="/question/listQuestions" var="question" collection="${questionList}"/>
+    			<g:render template="/question/listQuestions" var="question" collection="${questionList}"/>
 			</div>		
 			<div class="pagination">
 				<g:paginate total="${questionNumber}" />

@@ -8,6 +8,17 @@ class UserController {
 	
 	def badgeService
 
+	def beforeInterceptor = [action:this.&auth,
+		except:["login", "authenticate", "accessProfile", "logout", "list", "show","edit"]]
+
+	def auth() {
+		if( !(session?.user?.role == "admin") ){
+			flash.message = "You must be an administrator to perform that task."
+			redirect(action:"login",params:params)
+			return false
+		}
+	}
+
     def index() {
         redirect(action: "list", params: params)
     }

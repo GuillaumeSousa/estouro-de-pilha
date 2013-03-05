@@ -8,6 +8,7 @@ class CommentController {
 
 	def beforeInterceptor = [action:this.&auth, except:["create"]]
 	
+	
 	def auth() {
 		if(!session.user) {
 		  redirect(controller:"user", action:"login")

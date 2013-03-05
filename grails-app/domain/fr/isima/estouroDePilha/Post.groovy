@@ -2,7 +2,7 @@ package fr.isima.estouroDePilha
 
 class Post {
 
-	Date  	postedDate
+	Date  	postedDate = Calendar.instance.time
 	int 	nbVotes = 0
 	String 	message
 	

@@ -12,5 +12,4 @@ class Tag {
 	static constraints = {
 		description(maxSize:10000)
 	}
-	
 }

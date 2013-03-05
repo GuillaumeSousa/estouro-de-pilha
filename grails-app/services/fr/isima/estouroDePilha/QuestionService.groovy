@@ -7,9 +7,9 @@ class QuestionService {
 		question.nbViews++
 	}
 	
-	def addAnswer(Long id, String message){
+	def addAnswer(Long id, String message, Long userId){
 		def question = Question.get(id)
-		def answer = new Answer(question: question, author: question.author, message: message, postedDate : Calendar.instance.time)
+		def answer = new Answer(question: question, author: User.get(userId), message: message)
 		question.addToAnswers(answer)
 	}
 }

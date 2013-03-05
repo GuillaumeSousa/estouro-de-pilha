@@ -17,6 +17,7 @@ class User {
 	int reputation = 0
 	byte[] avatar
 	String avatarType
+	String role= "author"
 	
 	static hasMany = [badges : Badge]
 	
@@ -31,6 +32,7 @@ class User {
 		aboutMe(nullable:true, maxSize:10000)
 		avatar(nullable:true, maxSize: 16384 /* 16K */)
 		avatarType(nullable:true)
+		role(inList:["author", "admin"])
     }
 	
 	def hasTheBadge(String badgeName) {

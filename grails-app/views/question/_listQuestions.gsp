@@ -17,7 +17,7 @@
 	<tr>
 		<td>
 			<g:if test="${question.tags}">			
-				<g:each in="${question.tags}" var="t">
+				<g:each in="${question.tags.sort{it.tagname}}" var="t">
 				<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${t.tagname}</g:link>
 				</g:each>
 			</g:if>
