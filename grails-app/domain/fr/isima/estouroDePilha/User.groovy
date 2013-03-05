@@ -30,4 +30,16 @@ class User {
 		aboutMe(nullable:true, maxSize:10000)
 		role(inList:["author", "admin"])
     }
+	
+	def hasTheBadge(String badgeName) {
+		def badgeList = badges.toList();
+		def hasTheBadge = false;
+		for(Badge badge : badgeList) {
+			if(badge.badgeName.equals(badgeName)) {
+				hasTheBadge = true;
+				break;
+			}
+		}
+		hasTheBadge
+	}
 }

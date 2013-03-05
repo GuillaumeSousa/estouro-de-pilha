@@ -5,6 +5,8 @@ import org.springframework.dao.DataIntegrityViolationException
 class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	def badgeService
 
 	def beforeInterceptor = [action:this.&auth,
 		except:["login", "authenticate", "accessProfile", "logout", "list", "show","edit"]]
@@ -36,7 +38,7 @@ class UserController {
             render(view: "create", model: [userInstance: userInstance])
             return
         }
-
+		badgeService.checkAutobiographerBadge(userInstance.id)
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
         redirect(action: "show", id: userInstance.id)
     }
@@ -88,6 +90,7 @@ class UserController {
             return
         }
 
+		badgeService.checkAutobiographerBadge(userInstance.id)
         flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
         redirect(action: "show", id: userInstance.id)
     }
