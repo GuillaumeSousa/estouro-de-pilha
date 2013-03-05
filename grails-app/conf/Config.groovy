@@ -89,5 +89,9 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 		   
-	debug "grails.app.services" // To show debug logs from Services classes
+	debug 	"grails.app.services",   // To show debug logs from Services classes
+			"grails.app.controllers" // To show debug logs from Controllers classes
+			
+	info 	"grails.app.services",   // To show info logs from Services classes
+			"grails.app.controllers" // To show info logs from Controllers classes
 }

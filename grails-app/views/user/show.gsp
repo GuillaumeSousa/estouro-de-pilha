@@ -22,6 +22,10 @@
 			</g:if>
 			<ol class="property-list user">
 			
+				<g:if test="${userInstance.avatar}">
+				  <img class="avatar" src="${createLink(controller:'user', action:'avatar_image', id:userInstance.id)}" />
+				</g:if>
+
 				<g:if test="${userInstance?.login}">
 				<li class="fieldcontain">
 					<span id="login-label" class="property-label"><g:message code="user.login.label" default="Login" /></span>

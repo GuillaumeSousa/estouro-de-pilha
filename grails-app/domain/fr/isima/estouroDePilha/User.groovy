@@ -15,6 +15,8 @@ class User {
 	String aboutMe
 	Date registerDate = Calendar.instance.time
 	int reputation = 0
+	byte[] avatar
+	String avatarType
 	
 	static hasMany = [badges : Badge]
 	
@@ -27,6 +29,8 @@ class User {
 		location(nullable:true)
 		birthDate(max:new Date())
 		aboutMe(nullable:true, maxSize:10000)
+		avatar(nullable:true, maxSize: 16384 /* 16K */)
+		avatarType(nullable:true)
     }
 	
 	def hasTheBadge(String badgeName) {
