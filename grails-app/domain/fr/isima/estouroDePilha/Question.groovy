@@ -9,4 +9,9 @@ class Question extends Post{
 	int 		nbViews = 0
 	
 	static hasMany = [answers:Answer, comments : Comment, tags : Tag]
+	
+	static mapping = {
+		answers cascade: "all-delete-orphan"
+		comments cascade: "all-delete-orphan"
+   }
 }

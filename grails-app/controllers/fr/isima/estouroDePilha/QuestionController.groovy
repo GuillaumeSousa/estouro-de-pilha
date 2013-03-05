@@ -103,6 +103,8 @@ class QuestionController {
         }
 
         try {
+			questionInstance.answers.clear()
+			questionInstance.comments.clear()
             questionInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'question.label', default: 'Question'), id])
             redirect(action: "list")
