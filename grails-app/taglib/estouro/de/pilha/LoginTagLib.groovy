@@ -33,4 +33,20 @@ class LoginTagLib {
 		  } 
 	  }
   }
+  
+  def deleteCommentControl = {attrs, body->
+	  if(session.user){
+		  if(session.user.role == "admin"){
+			out << """${link(action:"deleteComment", controller:"question", params:[id:attrs.commentId]){"Delete"}}"""
+		  }
+	  }
+  }
+  
+  def deleteAnswerControl = {attrs, body->
+	  if(session.user){
+		  if(session.user.role == "admin"){
+		out << """${link(action:"deleteAnswer", controller:"question", params:[id:attrs.answerId]){"Delete"}}"""
+		  }
+	  }
+  }
 }

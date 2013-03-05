@@ -8,4 +8,8 @@ class Answer extends Post{
 	
 	static belongsTo = [question:Question]
 	static hasMany = [comments:Comment]
+	
+	static mapping = {
+		comments cascade: "all-delete-orphan"
+   }
 }

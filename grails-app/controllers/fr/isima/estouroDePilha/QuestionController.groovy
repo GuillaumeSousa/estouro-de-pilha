@@ -9,13 +9,13 @@ class QuestionController {
 	def questionService
 	
 	def beforeInterceptor = [action:this.&auth, except:["index", "list", "show"]]
-	
-	  def auth() {
+		
+	def auth() {
 		if(!session.user) {
-		  redirect(controller:"user", action:"login")
-		  return false
+			redirect(controller:"user", action:"login")
+			return false
 		}
-	  }
+	}
 	  
     def index() {
         redirect(action: "list", params: params)
@@ -125,5 +125,29 @@ class QuestionController {
 	
 	def sortAnswersByVotes(Long id){	
 		render template: '/answer/listAnswers', var: 'answer', collection: Answer.findAllByQuestion(Question.get(id), [sort: 'nbVotes', order:'desc'])
+	}
+	
+	def deleteComment(Long id){
+		def comment = Comment.get(id)
+		def post = comment.post
+		comment.delete(flush: true)
+		
+		if(comment.post.getClass() == Question.class)
+		{
+			redirect(controller:"question", action: "show", id: post.id)
+		}
+		else if (comment.post.getClass() == Answer.class)
+		{
+			redirect(controller:"question", action: "show", id: post.question.id)
+		}
+	}
+	
+	def deleteAnswer(Long id){
+		def answer = Answer.get(id)
+		def question = answer.question
+				
+		answer.comments.clear()
+		answer.delete(flush: true)
+		redirect(action: "show", id: question.id)
 	}
 }

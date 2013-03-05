@@ -6,6 +6,7 @@
 		<td width="15%;">
 			<div id="post-${answer.id}">
 			      <g:render template="/post/votes" model="[post:answer]"/>
+			      <g:deleteAnswerControl answerId="${answer?.id}"/>
 		    </div>
 		</td> 
 		<td>
