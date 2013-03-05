@@ -36,12 +36,16 @@ class User {
     }
 	
 	def hasTheBadge(String badgeName) {
-		def badgeList = badges.toList();
-		def hasTheBadge = false;
-		for(Badge badge : badgeList) {
-			if(badge.badgeName.equals(badgeName)) {
-				hasTheBadge = true;
-				break;
+		def hasTheBadge = false
+		if(badges)
+		{
+			def badgeList = badges.toList()
+			
+			for(Badge badge : badgeList) {
+				if(badge.badgeName.equals(badgeName)) {
+					hasTheBadge = true
+					break
+				}
 			}
 		}
 		hasTheBadge
