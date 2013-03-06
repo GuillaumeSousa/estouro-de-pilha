@@ -89,4 +89,21 @@ class BadgeServiceTests {
 		assertTrue(user.hasTheBadge("Critic"))
 		assertEquals(user.badges.size(), 1)
 	}
+	
+	/*void testIncrReputationOfAuthor(){
+		mockDomain(Post)
+		mockDomain(Question)
+		def user = new User(login:"admin@groovyrocks.com",
+				password:"adminadmin",
+				pseudo:"admin",
+				realName:"Administrator",
+				role:"admin",
+				birthDate : Date.parse("yyyy-MM-dd", "2000-01-01"))
+		user.save(validate:false)
+		def post = new Question(subject: "my subject", message: "my message")
+		post.author = user
+		post.save(validate:false)
+		badgeService.incrReputationOfAuthor(post.id)
+		assertEquals(post.author.reputation, 5)
+	}*/
 }
