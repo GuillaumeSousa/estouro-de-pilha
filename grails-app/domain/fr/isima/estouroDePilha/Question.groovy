@@ -10,6 +10,10 @@ class Question extends Post{
 	
 	static hasMany = [answers:Answer, comments : Comment, tags : Tag]
 	
+	static constraint = {
+		subject(blank:false)
+	}
+	
 	static mapping = {
 		answers cascade: "all-delete-orphan"
 		comments cascade: "all-delete-orphan"

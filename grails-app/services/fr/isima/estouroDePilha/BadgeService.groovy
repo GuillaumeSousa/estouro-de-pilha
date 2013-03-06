@@ -8,7 +8,7 @@ class BadgeService {
 		def user = User.get(id)
 		if(!user.hasTheBadge("Autobiographer")){
 			if(user.realName!=null && user.website != null && user.location != null && user.aboutMe != null){
-				Badge autobiographer = Badge.find("from Badge as b where b.badgeName='Autobiographer'")
+				Badge autobiographer = Badge.find{ badgeName == "Autobiographer" }
 				user.addToBadges(autobiographer)
 			}
 		}

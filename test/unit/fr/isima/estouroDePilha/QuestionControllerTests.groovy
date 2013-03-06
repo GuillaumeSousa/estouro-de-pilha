@@ -11,8 +11,8 @@ class QuestionControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["subject"] = 'my Subject'
+		params["message"] = 'my Message'
     }
 
     void testIndex() {
@@ -35,6 +35,16 @@ class QuestionControllerTests {
     }
 
     void testSave() {
+		mockController(QuestionController)
+		mockDomain(User)
+		def user = new User(login:"admin@groovyrocks.com",
+			password:"adminadmin",
+			pseudo:"admin",
+			realName:"Administrator",
+			role:"admin",
+			birthDate : Date.parse("yyyy-MM-dd", "2000-01-01"))
+		user.save(validate:false)
+		session.user = user
         controller.save()
 
         assert model.questionInstance != null
@@ -56,10 +66,12 @@ class QuestionControllerTests {
         assert flash.message != null
         assert response.redirectedUrl == '/question/list'
 
-        populateValidParams(params)
-        def question = new Question(params)
+        //populateValidParams(params)
+        //def question = new Question(params)
+		def question = new Question(subject: "my subject", message: "my message")
+		question.save(validate: false)
 
-        assert question.save() != null
+        assert question.save(validate:false) != null
 
         params.id = question.id
 
@@ -77,7 +89,7 @@ class QuestionControllerTests {
         populateValidParams(params)
         def question = new Question(params)
 
-        assert question.save() != null
+        assert question.save(validate:false) != null
 
         params.id = question.id
 
@@ -96,13 +108,14 @@ class QuestionControllerTests {
 
         populateValidParams(params)
         def question = new Question(params)
-
-        assert question.save() != null
+		
+        assert question.save(validate:false) != null
 
         // test invalid parameters in update
         params.id = question.id
-        //TODO: add invalid values to params object
+        question.subject=""
 
+		
         controller.update()
 
         assert view == "/question/edit"
@@ -141,7 +154,7 @@ class QuestionControllerTests {
         populateValidParams(params)
         def question = new Question(params)
 
-        assert question.save() != null
+        assert question.save(validate:false) != null
         assert Question.count() == 1
 
         params.id = question.id

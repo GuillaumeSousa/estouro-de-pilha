@@ -49,8 +49,12 @@ class QuestionController {
             redirect(action: "list")
             return
         }
+		questionService = new QuestionService()
 		questionService.incrViews(id)
-		questionInstance.answers.sort{it.postedDate}.reverse()
+		if(questionInstance.answers)
+		{
+			questionInstance.answers.sort{it.postedDate}.reverse()
+		}
         [questionInstance: questionInstance]
     }
 
@@ -103,8 +107,14 @@ class QuestionController {
         }
 
         try {
-			questionInstance.answers.clear()
-			questionInstance.comments.clear()
+			if(questionInstance.answers)
+			{
+				questionInstance.answers.clear()
+			}
+			if(questionInstance.comments)
+			{
+				questionInstance.comments.clear()
+			}
             questionInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'question.label', default: 'Question'), id])
             redirect(action: "list")
@@ -117,6 +127,7 @@ class QuestionController {
 	
 
 	def addAnswer(Long id){
+		questionService = new QuestionService()
 		questionService.addAnswer(id, params.get("messageAnswer"),session.user.id)
 		redirect(action: "show", id: id)
 	}
