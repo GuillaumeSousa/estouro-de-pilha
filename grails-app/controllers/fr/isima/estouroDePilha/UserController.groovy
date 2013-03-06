@@ -9,7 +9,7 @@ class UserController {
 	def badgeService
 
 	def beforeInterceptor = [action:this.&auth,
-		except:["login", "authenticate", "accessProfile", "logout", "list", "show","edit"]]
+		except:["login", "authenticate", "accessProfile", "logout", "list", "show","edit", "update", "choose_avatar", "upload_avatar", "avatar_image"]]
 
 	def auth() {
 		if( !(session?.user?.role == "admin") ){
@@ -168,12 +168,13 @@ class UserController {
 		log.info("File uploaded: " + user.avatarType)
 	  
 	  // Validation works, will check if the image is too big 
-		if (!user.save(flush: true)) { 
+		if (!user.save(flush: true)) {
+			flash.message = "Avatar is too big (256K max)"
 			render(view:'choose_avatar', model:[user:user]) 
 			return; 
 		} 
 		flash.message = "Avatar (${user.avatarType}, ${user.avatar.size()} bytes) uploaded." 
-		redirect(action:'show') 
+		redirect(action:"show", id: user.id) 
 	}
 	
 	

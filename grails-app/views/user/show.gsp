@@ -9,114 +9,231 @@
 	</head>
 	<body>
 		<a href="#show-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-user" class="content scaffold-show" role="main">
+		
+		<div id="show-user" class="user-header" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<ol class="property-list user">
+			<div class="user-header-left">
 			
-				<g:if test="${userInstance.avatar}">
-				  <img class="avatar" src="${createLink(controller:'user', action:'avatar_image', id:userInstance.id)}" />
-				</g:if>
+			  <div class="gravatar">
+			  	<g:if test="${userInstance.avatar}">
+			  		<img class="avatar" src="${createLink(controller:'user', action:'avatar_image', id:userInstance.id)}" />
+			  	</g:if>
+			  	<div class="reputation">
+					<span>
+						<g:fieldValue bean="${userInstance}" field="reputation"/>
+					</span>
+					reputation(s)
+				</div>
+			  </div>
 
-				<g:if test="${userInstance?.login}">
-				<li class="fieldcontain">
-					<span id="login-label" class="property-label"><g:message code="user.login.label" default="Login" /></span>
-					
-						<span class="property-value" aria-labelledby="login-label"><g:fieldValue bean="${userInstance}" field="login"/></span>
-					
-				</li>
-				</g:if>
-						
-				<g:if test="${userInstance?.website}">
-				<li class="fieldcontain">
-					<span id="website-label" class="property-label"><g:message code="user.website.label" default="Website" /></span>
-					
-						<span class="property-value" aria-labelledby="website-label"><g:fieldValue bean="${userInstance}" field="website"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.birthDate}">
-				<li class="fieldcontain">
-					<span id="birthDate-label" class="property-label"><g:message code="user.birthDate.label" default="Birth Date" /></span>
-					
-						<span class="property-value" aria-labelledby="birthDate-label"><g:formatDate date="${userInstance?.birthDate}" format="dd/MM/yyyy" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.badges}">
-				<li class="fieldcontain">
-					<span id="badges-label" class="property-label"><g:message code="user.badges.label" default="Badges" /></span>
-					
-						<g:each in="${userInstance.badges}" var="b">
-						<span class="property-value" aria-labelledby="badges-label"><g:link controller="badge" action="show" id="${b.id}">${b?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.location}">
-				<li class="fieldcontain">
-					<span id="location-label" class="property-label"><g:message code="user.location.label" default="Location" /></span>
-					
-						<span class="property-value" aria-labelledby="location-label"><g:fieldValue bean="${userInstance}" field="location"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.pseudo}">
-				<li class="fieldcontain">
-					<span id="pseudo-label" class="property-label"><g:message code="user.pseudo.label" default="Pseudo" /></span>
-					
-						<span class="property-value" aria-labelledby="pseudo-label"><g:fieldValue bean="${userInstance}" field="pseudo"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.registerDate}">
-				<li class="fieldcontain">
-					<span id="registerDate-label" class="property-label"><g:message code="user.registerDate.label" default="Register Date" /></span>
-					
-						<span class="property-value" aria-labelledby="registerDate-label"><g:formatDate date="${userInstance?.registerDate}" format="dd/MM/yyyy"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.reputation}">
-				<li class="fieldcontain">
-					<span id="reputation-label" class="property-label"><g:message code="user.reputation.label" default="Reputation" /></span>
-					
-						<span class="property-value" aria-labelledby="reputation-label"><g:fieldValue bean="${userInstance}" field="reputation"/></span>
-					
-				</li>
-				</g:if>
 				
-				<g:if test="${userInstance?.reputation}">
-				<li class="fieldcontain">
-					<span id="reputation-label" class="property-label"><g:message code="user.reputation.label" default="Reputation" /></span>
-					
-						<span class="property-value" aria-labelledby="reputation-label"><g:fieldValue bean="${userInstance}" field="reputation"/></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
+				<div class="data">
+		            <table>
+		                <tbody>
+		                    <tr>
+		                        <th>bio</th>
+		                        <td>website</td>
+		                        <td><g:fieldValue bean="${userInstance}" field="website"/></td>
+		                    </tr>
+		                    <tr>
+		                        <th></th>
+		                        <td>location</td>
+		                        <td class="label adr"><g:fieldValue bean="${userInstance}" field="location"/></td>
+		                    </tr>
+		                    <tr>
+		                        <th></th>
+		                        <td>email</td>
+		                        <td><g:fieldValue bean="${userInstance}" field="login"/></td>
+		                    </tr>
+		                    <tr>
+		                        <th></th>
+		                        <td>real name</td>
+		                        <td><g:fieldValue bean="${userInstance}" field="realName"/></td>
+		                    </tr>
+		                    <tr>
+		                        <th></th>
+		                        <td>birth date</td>
+		                        <td><g:formatDate date="${userInstance?.birthDate}" format="dd/MM/yyyy" /></td>
+		                    </tr>
+		                </tbody>
+		                <tbody>
+		                    <tr>
+		                        <th>visits</th>
+		                        <td>register date</td>
+		                        <td><g:formatDate date="${userInstance?.registerDate}" format="dd/MM/yyyy"/></td>
+		                    </tr>
+		                </tbody>
+		            </table>
+            	</div>
+			</div>
+			<div class="user-about-me">
+                <p><g:fieldValue bean="${userInstance}" field="aboutMe"/></p>
+	        </div>
+	        <br>
+		</div>
+		
+		
+		<div id="user-panel-answers" class="user-panel user-panel-left">
+		    <div class="subheader">
+		        <h1><a href="/users/2062532/guie?tab=answers">
+		    <span class='count'>0</span> Answers
+		</a></h1>
+		            <div class="subtabs user-panel-subtabs">
+		            mettre tris
+		        </div>
+		    </div>
+		
+		    <div class="user-panel-content">
+		        
+		        <div class="empty">You have not answered any questions</div>
+		
+		    </div>
+		
+		    <div class="user-panel-footer">
+		
+		    </div>
+		</div>
+		<div id="user-panel-reputation" class="user-panel">
+		    <div class="subheader">
+		        <h1><a href="/users/2062532/guie?tab=reputation">
+		    <span class="count">1</span> Reputation
+		</a></h1>
+		
+		        </div>
+		
+		    <div class="user-panel-content">
+		        
+		
+		
+		        <div class="empty">You have no reputation changes</a></div>
+		
+		    </div>
+		
+		    <div class="user-panel-footer">
+		
+		    </div>
+		</div>
+		<div id="user-panel-questions" class="user-panel user-panel-left">
+		    <div class="subheader">
+		        <h1><a href="/users/2062532/guie?tab=questions">
+		    <span class='count'>0</span> Questions
+		</a></h1>
+		            <div class="subtabs user-panel-subtabs">
+		            mettre tris
+		        </div>
+		    </div>
+		
+		    <div class="user-panel-content">
+		        
+		        <div class="empty">You have not asked any questions</a></div>
+		
+		    </div>
+		
+		    <div class="user-panel-footer">
+		
+		    </div>
+		</div>
+		<div id="user-panel-tags" class="user-panel">
+		    <div class="subheader">
+		        <h1><a href="/users/2062532/guie?tab=tags">
+		    <span class='count'>0</span> Tags
+		</a></h1>
+		        </div>
+		
+		    <div class="user-panel-content">
+		        
+		        <div class="empty">You have not participated in any tags</a></div>
+		
+		    </div>
+		
+		    <div class="user-panel-footer">
+		
+		    </div>
+		</div>
+		
+		<div id="user-panel-badges" class="user-panel">
+		    <div class="subheader">
+		        <h1><a href="/users/2062532/guie?tab=badges">
+		    <span class='count'>2</span> Badges
+		</a></h1>
+		        <div class="subtabs user-panel-subtabs">
+		            mettre tris
+		        </div>
+		    </div>
+		
+		    <div class="user-panel-content">
+		        
+		        <table class="user-badges">
+		            <tbody>
+		                <tr>                
+		                    <td>
+		                        <a href="/badges/2600/informed?userid=2062532" title="bronze badge: Read the entire about page" class="badge"><span class="badge3"></span>&nbsp;Informed</a>
+		
+		                        
+		                    </td>                                                                                           
+		                    <td>
+		                        <a href="/badges/1306/analytical?userid=2062532" title="bronze badge: Visited every section of the FAQ" class="badge"><span class="badge3"></span>&nbsp;Analytical</a>
+		
+		                        
+		                    </td>                                                                                           
+		                </tr>               
+		            </tbody>
+		        </table>
+		
+		    </div>
+		
+		    <div class="user-panel-footer">
+		
+		    </div>
+		</div>
+		
+		<div id="user-panel-votes" class="user-panel">
+		    <div class="subheader">
+		        <h1>
+		    <span class='count'>0</span> Votes Cast
+		</h1>
+		        </div>
+		
+		    <div class="user-panel-content">
+		        
+		        <div class="empty">You have not cast any votes</div>
+		
+		    </div>
+		
+		    <div class="user-panel-footer">
+		
+		    </div>
+		</div>
+		
+		<div id="user-panel-vote" class="user-panel">
+		    <div class="subheader">
+		        <h1>
+				    <span class='count'></span>
+				</h1>
+		        </div>
+		
+		    <div class="user-panel-content">
+		        
+		        <div class="empty"></div>
+		
+		    </div>
+		
+		    <div class="user-panel-footer">
+		
+		    </div>
+		</div>
+
+		
+		
+		
+		<div id="buttonsBar" class="content scaffold-show">
+			<g:form class="content scaffold-show">
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${userInstance?.id}" />
 					<g:editUserControl shownUserId="${userInstance?.id}"/>
-					<!--<g:link class="edit" action="edit" id="${userInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					-->
 				</fieldset>
 			</g:form>
 		</div>

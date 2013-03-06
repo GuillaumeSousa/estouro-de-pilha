@@ -9,8 +9,11 @@
   <div class="body">
   	<fieldset>
 	  <legend>Upload your avatar</legend>
+	  			<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+			</g:if>
 	  <g:form action="upload_avatar" method="post" enctype="multipart/form-data">
-	    <label for="avatar">Avatar (16K)</label>
+	    <label for="avatar">Avatar (256K max)</label>
 	    <input type="file" name="avatar" id="avatar" />
 	    <div style="font-size:0.8em; margin: 1.0em;">
 	      For best results, your avatar should have a width-to-height ratio of 4:5.

@@ -776,3 +776,121 @@ img.avatar_tiny {
 	width: 2em; height: 2.5em; 
 }
 
+/* User profile style */
+.user-header .user-header-left{
+	float:left;width:465px;
+	margin-right:30px;
+}
+
+.user-header .user-header-left .gravatar{
+	float:left;
+	margin-right:15px;
+}
+.user-header .user-header-left .gravatar .reputation{
+	margin-top:10px;
+	text-align:center;
+	width:128px;
+}
+.user-header .user-header-left .gravatar .reputation span{
+	display:block !important;
+	font-size:220% !important;
+	margin-bottom:5px !important;
+}
+.user-header .user-header-left .gravatar .reputation a{
+	color:black !important;
+}
+.user-header .user-header-left .gravatar .badges{
+	margin-top:15px;
+	width:128px;
+	text-align:center;
+}
+.user-header .user-header-left .gravatar .badges>span{
+	display:block !important;
+	font-size:120% !important;
+	margin-bottom:5px !important;
+}
+.user-header .data{
+	line-height:1.3 !important;
+	width:322px !important;
+	float:left !important;
+}
+.user-header .data th{
+	background-color:white !important;
+	background-image:none !important;
+	font-weight:normal !important;
+	color:#A0A0A0 !important;
+	font-style:italic !important;
+}
+.user-header .data th,.user-header .data td{
+	padding:3px 20px 3px 0 !important;
+	white-space:nowrap !important;
+	vertical-align:top !important;
+}
+.user-header .data tbody:first-child tr:first-child th,.user-header .data tbody:first-child tr:first-child td{
+	padding-top:0 !important;
+}
+.user-header .data tr:last-child th,.user-header .data tr:last-child td{
+	padding-bottom:15px !important;
+}
+.user-header .data td:last-child{
+	padding-right:0 !important;
+	white-space:normal !important;
+	max-width:145px !important;
+	width:100% !important;
+}
+.user-header .data .no-overflow{
+	width:205px !important;
+}
+.user-header .user-about-me{
+	width:445px !important;
+	height:225px !important;
+	float:right !important;
+	overflow-y:auto !important;
+	background-color: #efefef !important;
+	}
+.user-panel{
+	width:465px;
+	float:left;
+	margin-bottom:30px;
+}
+.user-panel-left{
+	margin-right:30px;
+}
+.user-panel .user-panel-content{
+	margin-bottom:10px;
+}
+.user-panel .subheader .count{
+	font-weight:normal !important;
+	color:#808080 !important;
+}
+.user-panel .user-panel-subtabs{
+	float:right;
+	width:auto;
+	margin-top:10px;
+}
+.user-panel .user-panel-subtabs a{
+	border:none !important;
+	float:left !important;
+	font-size:11px !important;
+	font-weight:normal !important;
+	margin-left:10px !important;
+}
+.subheader h1,.subheader h2{
+	float:left !important;
+	font-size:18px !important;
+	line-height:34px !important;
+	margin-bottom:0px !important;
+}
+.subheader a{
+	color:#000000 !important;
+	text-decoration:none !important;
+}
+/*.user-panel-footer{
+	color:#444;
+	background:#777777;
+	border-top:7px solid #000;
+	clear:both;
+	padding:15px;
+	margin-top:30px;
+}*/
+

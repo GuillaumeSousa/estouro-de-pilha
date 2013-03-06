@@ -30,7 +30,7 @@ class User {
 		location(nullable:true)
 		birthDate(max:new Date())
 		aboutMe(nullable:true, maxSize:10000)
-		avatar(nullable:true, maxSize: 16384 /* 16K */)
+		avatar(nullable:true, maxSize: 262144 /* 256K */)
 		avatarType(nullable:true)
 		role(inList:["author", "admin"])
     }
