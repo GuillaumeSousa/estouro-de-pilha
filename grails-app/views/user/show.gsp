@@ -79,7 +79,7 @@
 		<div id="user-panel-answers" class="user-panel user-panel-left">
 		    <div class="subheader">
 		        <h1><a href="/users/2062532/guie?tab=answers">
-		    <span class='count'>0</span> Answers
+		    <span class='count'>${userInstance?.answers.size()}</span> Answers
 		</a></h1>
 		            <div class="subtabs user-panel-subtabs">
 		            mettre tris
@@ -119,7 +119,7 @@
 		<div id="user-panel-questions" class="user-panel user-panel-left">
 		    <div class="subheader">
 		        <h1><a href="/users/2062532/guie?tab=questions">
-		    <span class='count'>0</span> Questions
+		    <span class='count'>${userInstance?.questions.size()}</span> Questions
 		</a></h1>
 		            <div class="subtabs user-panel-subtabs">
 		            mettre tris

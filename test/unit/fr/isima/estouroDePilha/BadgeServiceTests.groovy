@@ -93,17 +93,20 @@ class BadgeServiceTests {
 	/*void testIncrReputationOfAuthor(){
 		mockDomain(Post)
 		mockDomain(Question)
+		def question = new Question(subject: "my subject", message: "my message")
+		question.save(validate:false)
+		
 		def user = new User(login:"admin@groovyrocks.com",
 				password:"adminadmin",
 				pseudo:"admin",
 				realName:"Administrator",
 				role:"admin",
 				birthDate : Date.parse("yyyy-MM-dd", "2000-01-01"))
+		
+		user.addToQuestions(question)
 		user.save(validate:false)
-		def post = new Question(subject: "my subject", message: "my message")
-		post.author = user
-		post.save(validate:false)
-		badgeService.incrReputationOfAuthor(post.id)
-		assertEquals(post.author.reputation, 5)
+		
+		badgeService.incrReputationOfAuthor(question.id)
+		assertEquals(question.author.reputation, 5)
 	}*/
 }
