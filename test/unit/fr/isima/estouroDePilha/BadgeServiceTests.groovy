@@ -18,8 +18,8 @@ import org.junit.*
 class BadgeServiceTests {
 
 	def badgeService
+	
     void setUp() {
-       	badgeService = new BadgeService()
 		mockDomain(Badge)
 	   new Badge(badgeName: "Autobiographer",
 		   description: "Completed all user profile fields"
@@ -51,6 +51,7 @@ class BadgeServiceTests {
 				location: "Clermont-Fd",
 				aboutMe: "me")
 		user.save(validate:false)
+		badgeService = new BadgeService()
 		badgeService.checkAutobiographerBadge(user.id)
 		assertTrue(user.hasTheBadge("Autobiographer"))
 		assertEquals(user.badges.size(), 1)	
@@ -68,6 +69,7 @@ class BadgeServiceTests {
 				location: "Clermont-Fd",
 				aboutMe: "me")
 		user.save(validate:false)
+		badgeService = new BadgeService()
 		badgeService.checkSupporterBadge(user)
 		assertTrue(user.hasTheBadge("Supporter"))
 		assertEquals(user.badges.size(), 1)
@@ -85,6 +87,7 @@ class BadgeServiceTests {
 				location: "Clermont-Fd",
 				aboutMe: "me")
 		user.save(validate:false)
+		badgeService = new BadgeService()
 		badgeService.checkCriticBadge(user)
 		assertTrue(user.hasTheBadge("Critic"))
 		assertEquals(user.badges.size(), 1)
@@ -93,17 +96,20 @@ class BadgeServiceTests {
 	/*void testIncrReputationOfAuthor(){
 		mockDomain(Post)
 		mockDomain(Question)
+		def question = new Question(subject: "my subject", message: "my message")
+		question.save(validate:false)
+		
 		def user = new User(login:"admin@groovyrocks.com",
 				password:"adminadmin",
 				pseudo:"admin",
 				realName:"Administrator",
 				role:"admin",
 				birthDate : Date.parse("yyyy-MM-dd", "2000-01-01"))
+		
+		user.addToQuestions(question)
 		user.save(validate:false)
-		def post = new Question(subject: "my subject", message: "my message")
-		post.author = user
-		post.save(validate:false)
-		badgeService.incrReputationOfAuthor(post.id)
-		assertEquals(post.author.reputation, 5)
+		
+		badgeService.incrReputationOfAuthor(question.id)
+		assertEquals(question.author.reputation, 5)
 	}*/
 }
