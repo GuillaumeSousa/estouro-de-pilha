@@ -18,8 +18,8 @@ import org.junit.*
 class BadgeServiceTests {
 
 	def badgeService
+	
     void setUp() {
-       	badgeService = new BadgeService()
 		mockDomain(Badge)
 	   new Badge(badgeName: "Autobiographer",
 		   description: "Completed all user profile fields"
@@ -51,6 +51,7 @@ class BadgeServiceTests {
 				location: "Clermont-Fd",
 				aboutMe: "me")
 		user.save(validate:false)
+		badgeService = new BadgeService()
 		badgeService.checkAutobiographerBadge(user.id)
 		assertTrue(user.hasTheBadge("Autobiographer"))
 		assertEquals(user.badges.size(), 1)	
@@ -68,6 +69,7 @@ class BadgeServiceTests {
 				location: "Clermont-Fd",
 				aboutMe: "me")
 		user.save(validate:false)
+		badgeService = new BadgeService()
 		badgeService.checkSupporterBadge(user)
 		assertTrue(user.hasTheBadge("Supporter"))
 		assertEquals(user.badges.size(), 1)
@@ -85,6 +87,7 @@ class BadgeServiceTests {
 				location: "Clermont-Fd",
 				aboutMe: "me")
 		user.save(validate:false)
+		badgeService = new BadgeService()
 		badgeService.checkCriticBadge(user)
 		assertTrue(user.hasTheBadge("Critic"))
 		assertEquals(user.badges.size(), 1)

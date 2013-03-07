@@ -10,7 +10,7 @@ import org.junit.*
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
 @TestMixin(GrailsUnitTestMixin)
-class IndexControllerTests {
+class AnswerControllerTests {
 
     void setUp() {
         // Setup logic here
@@ -19,7 +19,7 @@ class IndexControllerTests {
     void tearDown() {
         // Tear down logic here
     }
-
+	
 	void test() {
 		assertTrue(true)
 	}

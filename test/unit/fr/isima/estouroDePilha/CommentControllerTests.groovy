@@ -46,10 +46,10 @@ class CommentControllerTests {
 		user.save(validate:false)
 		session.user = user
 		
-		
+		mockDomain(Post)
 		mockDomain(Question)
-		def post = new Question(subject: "my subject", message: "my message")
-		user.addToQuestions(post)
+		def question = new Question(subject: "my subject", message: "my message")
+		user.addToQuestions(question)
         controller.save()
 
         assert model.commentInstance != null
@@ -58,7 +58,8 @@ class CommentControllerTests {
         response.reset()
 
         populateValidParams(params)
-		post.addToComments(commentInstance)
+		def comment = new Comment(params)
+		question.addToComments(comment)
         controller.save()
 
         assert response.redirectedUrl == '/question/show/1'
