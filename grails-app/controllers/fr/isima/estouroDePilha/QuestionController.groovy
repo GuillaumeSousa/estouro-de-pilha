@@ -163,4 +163,9 @@ class QuestionController {
 		answer.delete(flush: true)
 		redirect(action: "show", id: question.id)
 	}
+	
+	def displayMessage(Long id) {
+		flash.message = "You must be connected to vote"
+		redirect(action: "show", id: id)
+	}
 }

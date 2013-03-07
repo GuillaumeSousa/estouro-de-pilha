@@ -1,5 +1,7 @@
 package fr.isima.estouroDePilha
 
+import org.springframework.web.servlet.ModelAndView
+
 class PostController {
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -10,16 +12,36 @@ class PostController {
 	def badgeService
 	
 	def incrVotes(Long id){
-		postService.incrVotes(id) 
-		badgeService.checkSupporterBadge(session.user)
-		badgeService.incrReputationOfAuthor(id)
+		log.info("incrVotes is called")
+		// If user is connected, his vote is taken into account
+		if(session.user){
+			postService.incrVotes(id, session.user?.id) 
+			badgeService.checkSupporterBadge(session.user)
+			badgeService.incrReputationOfAuthor(id)
+		}
+		// Else, his vote is not taken into account
+		else{
+			log.info("User not connected tries to vote")
+			//flash.message = "You must be connected to vote"
+			//TODO : try to display this fucking message
+		}
 		render Post.get(id).nbVotes
 	}
 	
 	def decrVotes(Long id){
-		postService.decrVotes(id)
-		badgeService.checkCriticBadge(session.user)
-		badgeService.decrReputationOfAuthor(id)
+		log.info("incrVotes is called")
+		// If user is connected, his vote is taken into account
+		if(session.user){
+			postService.decrVotes(id, session.user?.id)
+			badgeService.checkCriticBadge(session.user)
+			badgeService.decrReputationOfAuthor(id, session.user?.id)
+		}
+		// Else, his vote is not taken into account
+		else{
+			log.info("User not connected tries to vote")
+			//flash.message = "You must be connected to vote"
+			//TODO : try to display this fucking message
+		}
 		render Post.get(id).nbVotes
 	}
 	

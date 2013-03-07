@@ -19,7 +19,7 @@ class User {
 	String avatarType
 	String role= "author"
 	
-	static hasMany = [badges : Badge]
+	static hasMany = [badges : Badge, votesUp : VoteUp, votesDown : VoteDown]
 	
     static constraints = {
 		login(blank: false, email : true, unique:true)

@@ -10,4 +10,6 @@
 	<g:remoteLink controller="post" action="decrVotes" id="${post.id}" update="postVotes-${post.id}">
 	   <g:img dir="images" file="arrow-down.png" width="40px" height="40px"/>
 	</g:remoteLink>
+	
+	<p>${errorMessage}</p>
 </div>
