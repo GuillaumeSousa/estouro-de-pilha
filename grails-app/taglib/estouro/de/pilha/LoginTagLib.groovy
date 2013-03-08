@@ -49,4 +49,19 @@ class LoginTagLib {
 		  }
 	  }
   }
+  
+  def addTagControl = {attrs, body->
+	  if(session.user){
+		  if(session.user.role == "admin"){
+			out << """${link(action:"create", controller:"tag"){"New Tag"}}"""
+		  }
+	  }
+  }
+  
+  def newUserControl = {attrs, body->
+	  if(!session.user){
+		out << """${link(action:"create", controller:"user"){"New User"}}"""
+	  }
+  }
+  
 }

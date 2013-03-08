@@ -4,7 +4,7 @@
 		
 		<td>
 		<b style="color:#046380; font-size: 9"><g:link controller="Question" action="show" id="${question.id}">${question.subject}</g:link></b><br>
-		Author : ${question.author.pseudo}<br>
+		Author : <g:link controller="User" action="show" id="${question.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${question}" field="author.pseudo"/></span></g:link><br>
 		date : <g:formatDate date="${question.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
 		${question.message}
 		</td>

@@ -11,7 +11,9 @@
 		<a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li>
+					<g:newUserControl/>
+				</li>
 			</ul>
 		</div>
 		<div id="list-user" class="content scaffold-list" role="main">
@@ -19,40 +21,25 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			
 			<table>
-				<thead>
-					<tr>
-					
-						<g:sortableColumn property="login" title="${message(code: 'user.login.label', default: 'Login')}" />
-					
-						<g:sortableColumn property="website" title="${message(code: 'user.website.label', default: 'Website')}" />
-					
-						<g:sortableColumn property="birthDate" title="${message(code: 'user.birthDate.label', default: 'Birth Date')}" />
-					
-						<g:sortableColumn property="location" title="${message(code: 'user.location.label', default: 'Location')}" />
-					
-						<g:sortableColumn property="pseudo" title="${message(code: 'user.pseudo.label', default: 'Pseudo')}" />
-					
-					</tr>
-				</thead>
 				<tbody>
 				<g:each in="${userInstanceList}" status="i" var="userInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "login")}</g:link></td>
-					
-						<td>${fieldValue(bean: userInstance, field: "website")}</td>
-					
-						<td><g:formatDate date="${userInstance.birthDate}" /></td>
-					
-						<td>${fieldValue(bean: userInstance, field: "location")}</td>
-					
-						<td>${fieldValue(bean: userInstance, field: "pseudo")}</td>
-					
-					</tr>
+						<td>
+							<g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "pseudo")}</g:link>
+							<div class="excerpt">
+							reputation : ${userInstance.reputation}<br>
+							questions : ${userInstance.questions.size()}<br>
+							answers : ${userInstance.answers.size()}	
+							</div>
+						</td>
+					<%if((i+1)%4 == 0) { %>
+					<tr></tr>
+					<%} %>
 				</g:each>
 				</tbody>
 			</table>
+			
 			<div class="pagination">
 				<g:paginate total="${userInstanceTotal}" />
 			</div>
