@@ -9,7 +9,7 @@ class UserController {
 	def badgeService
 
 	def beforeInterceptor = [action:this.&auth,
-		except:["login", "authenticate", "accessProfile", "logout", "list", "show","edit", "update", "choose_avatar", "upload_avatar", "avatar_image","create","save"]]
+		except:["login", "authenticate", "accessProfile", "logout", "list", "show","edit", "update", "choose_avatar", "upload_avatar", "avatar_image","create","save","listUserQuestions","listUserAnswers"]]
 
 	def auth() {
 		if( !(session?.user?.role == "admin") ){
@@ -191,4 +191,21 @@ class UserController {
 		out.write(avatarUser.avatar);
 		out.close();
 	  }
+	
+	def listUserQuestions(Long id) {
+		def user = User.get(id)
+		def questionList = Question.findAllByAuthor(user)
+		
+		[questionInstanceList: questionList.sort{it.postedDate}.reverse(), questionInstanceTotal: questionList.size()]	
+	}
+	
+	def listUserAnswers(Long id) {
+		def user = User.get(id)
+		def answerList = Answer.findAllByAuthor(user)
+		
+		[answerInstanceList: answerList.sort{it.postedDate}.reverse(), answerInstanceTotal: answerList.size()]
+	}
+	
+	
+
 }

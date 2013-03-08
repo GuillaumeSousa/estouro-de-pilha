@@ -99,6 +99,7 @@
 				</g:if>
 			</table>
 		</div>
+		
 		<div id="page-body" role="main">
 			<g:if test="${flash.message}">
 		        <div class="message">${flash.message}</div>
@@ -111,5 +112,6 @@
 				<g:paginate total="${questionNumber}" />
 			</div>
 		</div>
+		
 	</body>
 </html>
