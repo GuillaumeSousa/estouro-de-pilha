@@ -12,7 +12,7 @@ class BadgeController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [badgeInstanceList: Badge.list(params), badgeInstanceTotal: Badge.count()]
+        [badgeInstanceList: Badge.list(params).sort{it.users.size()}.reverse(), badgeInstanceTotal: Badge.count()]
     }
 
     def create() {

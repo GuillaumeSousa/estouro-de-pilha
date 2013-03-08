@@ -9,7 +9,7 @@ class UserController {
 	def badgeService
 
 	def beforeInterceptor = [action:this.&auth,
-		except:["login", "authenticate", "accessProfile", "logout", "list", "show","edit", "update", "choose_avatar", "upload_avatar", "avatar_image"]]
+		except:["login", "authenticate", "accessProfile", "logout", "list", "show","edit", "update", "choose_avatar", "upload_avatar", "avatar_image","create","save"]]
 
 	def auth() {
 		if( !(session?.user?.role == "admin") ){
@@ -25,7 +25,7 @@ class UserController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [userInstanceList: User.list(params), userInstanceTotal: User.count()]
+        [userInstanceList: User.list(params).sort{it.reputation}.reverse(), userInstanceTotal: User.count()]
     }
 
     def create() {
