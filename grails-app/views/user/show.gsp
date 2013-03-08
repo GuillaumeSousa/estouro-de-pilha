@@ -70,12 +70,77 @@
             	</div>
 			</div>
 			<div class="user-about-me">
+				<p><b>About me:</b></p>
                 <p><g:fieldValue bean="${userInstance}" field="aboutMe"/></p>
 	        </div>
 	        <br>
 		</div>
 		
 		
+		
+		<div class="subheader user-tabs-nav">
+        <div id="tabs">
+            <a class="youarehere" href="/users/2062532/guie?tab=summary" title="your overall summary">
+                        
+                summary
+            </a>
+            <a href="/users/2062532/guie?tab=answers" title="answers you have provided">
+                        
+                answers
+            </a>
+            <a href="/users/2062532/guie?tab=questions" title="questions you have asked">
+                        
+                questions
+            </a>
+            <a href="/users/2062532/guie?tab=tags" title="tags you have posts in">
+                        
+                tags
+            </a>
+            <a href="/users/2062532/guie?tab=badges" title="badges you have earned">
+                        
+                badges
+            </a>
+            <a href="/users/2062532/guie?tab=favorites" title="questions you have favorited">
+                        
+                favorites
+            </a>
+            <a href="/users/2062532/guie?tab=bounties" title="bounties you have participated in">
+                        
+                bounties
+            </a>
+            <a href="/users/2062532/guie?tab=reputation" title="reputation you have earned">
+                        
+                reputation
+            </a>
+            <a href="/users/2062532/guie?tab=activity" title="your recent activity">
+                        
+                activity
+            </a>
+            <a href="/users/2062532/guie?tab=responses" title="your recent responses">
+                        
+                responses
+            </a>
+            <a href="/users/2062532/guie?tab=votes" title="votes you have cast">
+                        
+                votes
+            </a>
+        </div>
+    </div>
+    <div class="nav" role="navigation">
+			<ul>
+				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<!-- g:link controller="question" action="list" params="[author: userInstance]"-->
+				    <!-- Question List  --> 
+				<!--/g:link-->
+				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				
+			</ul>
+		</div>
+		
+		<div>
 		<div id="user-panel-answers" class="user-panel user-panel-left">
 		    <div class="subheader">
 		        <h1><a href="/users/2062532/guie?tab=answers">
@@ -226,7 +291,7 @@
 		    </div>
 		</div>
 
-		
+		</div>
 		
 		
 		<div id="buttonsBar" class="content scaffold-show">

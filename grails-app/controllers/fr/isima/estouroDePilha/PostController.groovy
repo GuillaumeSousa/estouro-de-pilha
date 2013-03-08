@@ -17,7 +17,6 @@ class PostController {
 		if(session.user){
 			postService.incrVotes(id, session.user?.id) 
 			badgeService.checkSupporterBadge(session.user)
-			badgeService.incrReputationOfAuthor(id)
 		}
 		// Else, his vote is not taken into account
 		else{
@@ -34,7 +33,6 @@ class PostController {
 		if(session.user){
 			postService.decrVotes(id, session.user?.id)
 			badgeService.checkCriticBadge(session.user)
-			badgeService.decrReputationOfAuthor(id, session.user?.id)
 		}
 		// Else, his vote is not taken into account
 		else{
