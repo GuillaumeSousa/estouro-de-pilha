@@ -238,6 +238,7 @@ fieldset,
 .fieldcontain .property-value {
 	display: block;
 	margin-left: 27%;
+	color:"blue";
 }
 
 label {

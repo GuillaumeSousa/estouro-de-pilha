@@ -1,15 +1,15 @@
 <div>
 
 
-<table>
+<table style="table-layout: fixed; width: 100%">
 	<tr>
-		<td width="15%;">
+		<td width="15%;" style="word-wrap: break-word">
 			<div id="post-${answer.id}">
 			      <g:render template="/post/votes" model="[post:answer]"/>
 			      <g:deleteAnswerControl answerId="${answer?.id}"/>
 		    </div>
 		</td> 
-		<td>
+		<td style="word-wrap: break-word">
 			${answer.message}
 			
 			<div class="post-signature owner">

@@ -13,11 +13,7 @@
 			<h1><g:message code="question.list.title" /></h1>
 			<!-- List questions -->
 		    <div id="questions">
-    				<g:render template="/question/listQuestions" var="question" collection="${questionInstanceList}"/>
-			</div>
-						
-			<div class="pagination">
-				<g:paginate total="${questionInstanceTotal}" />
+    			<g:render template="/question/listQuestions" var="question" collection="${questionInstanceList}"/>
 			</div>
 		</div>
 	</body>

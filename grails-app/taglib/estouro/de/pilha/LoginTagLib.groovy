@@ -53,7 +53,7 @@ class LoginTagLib {
   def addTagControl = {attrs, body->
 	  if(session.user){
 		  if(session.user.role == "admin"){
-			out << """${link(action:"create", controller:"tag"){"${message(code: 'loginTagLib.newTag', default: 'New Tag')}"}}"""
+			out << """${link(class: "create", action:"create", controller:"tag"){"${message(code: 'loginTagLib.newTag', default: 'New Tag')}"}}"""
 		  }
 	  }
   }
@@ -70,6 +70,14 @@ class LoginTagLib {
 			  out << """${link(action:"choose_avatar", controller:"user", params:[id:session.user.id]){"${message(code: 'user.editAvatar', default: 'Change avatar')}"}}"""
 		  }
 		  
+	  }
+  }
+  
+  def editTagControl = {attrs, body->
+	  if(session.user){
+		  if(session.user.role == "admin"){
+			  out << """${link(class:"edit", action:"edit", controller:"tag", params:[id:attrs.tagId]){"${message(code: 'defaut.button.edit.label', default: 'Edit')}"}}"""
+		  }
 	  }
   }
   

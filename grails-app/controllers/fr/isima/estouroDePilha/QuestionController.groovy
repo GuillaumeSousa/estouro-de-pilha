@@ -22,8 +22,9 @@ class QuestionController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [questionInstanceList: Question.list(params).sort{it.postedDate}.reverse(), questionInstanceTotal: Question.count()]
+		def questionList = Question.list(params).sort{it.postedDate}.reverse()
+		def questionNumber = questionList.size()
+        [questionInstanceList: questionList, questionInstanceTotal: questionNumber]
     }
 
     def create() {

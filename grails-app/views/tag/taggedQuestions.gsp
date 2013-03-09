@@ -7,6 +7,12 @@
 	</head>
 	
 	<body>
+	  <g:form>
+		<fieldset class="buttons">
+			<g:hiddenField name="id" value="${tagInstance?.id}" />
+			<g:editTagControl tagId="${tagInstance?.id}"/>
+		</fieldset>
+	  </g:form>
 	  <div class="content scaffold-list">
 	  	  <h1><g:message code="${tagInstance.tagname}" /></h1>
 	  	  <div style="clear:both">
