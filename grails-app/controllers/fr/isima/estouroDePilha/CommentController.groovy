@@ -85,7 +85,7 @@ class CommentController {
             if (commentInstance.version > version) {
                 commentInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'comment.label', default: 'Comment')] as Object[],
-                          "Another user has updated this Comment while you were editing")
+                          "${message(code: 'comment.locking.failure', default: 'Locking failure')}")
                 render(view: "edit", model: [commentInstance: commentInstance])
                 return
             }

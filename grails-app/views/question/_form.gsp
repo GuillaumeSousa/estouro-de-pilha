@@ -6,7 +6,7 @@
 		<g:message code="question.subject.label" default="Subject" />
 		
 	</label>
-	<g:textField name="subject" value="${questionInstance?.subject}"/>
+	<g:textField name="subject" required="" value="${questionInstance?.subject}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'message', 'error')} ">
@@ -14,7 +14,7 @@
 		<g:message code="question.message.label" default="Message" />
 		
 	</label>
-	<g:textArea style="width:60%;" name="message" value="${questionInstance?.message}"/>
+	<g:textArea style="width:60%;" name="message" required="" value="${questionInstance?.message}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'tags', 'error')} ">

@@ -27,7 +27,7 @@
 				</li>
 			</div>
 			<br>
-			<g:link url="[controller: 'comment', action: 'create', params: [postId: answer.id]]">add a comment</g:link><br><br>			
+			<g:link url="[controller: 'comment', action: 'create', params: [postId: answer.id]]">${message(code: 'answer.addComment', default: 'Add a comment')}</g:link><br><br>			
 			<g:if test="${answer?.comments}">
 				<g:render template="/comment/listComments" model="[comments : answer.comments.sort{it.postedDate}]"></g:render>
 			</g:if>

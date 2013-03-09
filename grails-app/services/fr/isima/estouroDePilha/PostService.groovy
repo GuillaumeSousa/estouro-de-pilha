@@ -18,14 +18,16 @@ class PostService {
 				currentPost.nbVotes++
 				// Update reputation
 				badgeService.incrReputationOfAuthor(idPost)
+				badgeService.checkSupporterBadge(idUser)
 			}
 			else{
-				message = "You cannot vote several times for a same post"
+				log.info("User is trying to vote several times for a same post")
+				message = "${message(code: 'post.alreadyvoted.trytovote.message', default: 'You have already voted')}"
 			}
 		}
 		else{
 			log.info("User is trying to vote to his own post")
-			message = "You cannot vote for your own post"
+			message = "${message(code: 'post.userisauthor.trytovote.message', default: 'You cannot vote for your post')}"
 		}
 		
 		message
@@ -45,14 +47,16 @@ class PostService {
 				currentPost.nbVotes--
 				// Update reputation
 				badgeService.decrReputationOfAuthor(idPost, idUser)
+				badgeService.checkCriticBadge(idUser)
 			}
 			else{
-				message = "You cannot vote several times for a same post"
+				log.info("User is trying to vote several times for a same post")
+				message = "${message(code: 'post.alreadyvoted.trytovote.message', default: 'You have already voted')}"
 			}
 		}
 		else{
 			log.info("User is trying to vote to his own post")
-			message = "You cannot vote for your own post"
+			message = "${message(code: 'post.userisauthor.trytovote.message', default: 'You cannot vote for your post')}"
 		}
 		
 		message

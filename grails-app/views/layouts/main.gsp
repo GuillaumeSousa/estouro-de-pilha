@@ -38,12 +38,12 @@
 
 			<div class="nav">
 				<ul>
-					<li><a class="home" href="${createLink(uri: '/')}">Estouro De Pilha</a></li>
-			 		<li><g:link controller="Question" action="list">Questions</g:link></li>
-					<li><g:link controller="User" action="list">Users</g:link></li>
-					<li><g:link controller="Tag" action="list">Tags</g:link></li>
-					<li><g:link controller="Badge" action="list">Badges</g:link></li>
-					<li><g:link controller="Question" action="create">Ask Question</g:link></li>
+					<li><a class="home" href="${createLink(uri: '/')}">${message(code: 'topbar.home.label', default:"Estouro De Pilha")}</a></li>
+			 		<li><g:link controller="Question" action="list">${message(code: 'topbar.questions.label', default:"Questions")}</g:link></li>
+					<li><g:link controller="User" action="list">${message(code: 'topbar.users.label', default:"Users")}</g:link></li>
+					<li><g:link controller="Tag" action="list">${message(code: 'topbar.tags.label', default:"Tags")}</g:link></li>
+					<li><g:link controller="Badge" action="list">${message(code: 'topbar.badges.label', default:"Badges")}</g:link></li>
+					<li><g:link controller="Question" action="create">${message(code: 'topbar.askQuestion.label', default:"Ask Question")}</g:link></li>
 				</ul>
 			</div>
 		</div>

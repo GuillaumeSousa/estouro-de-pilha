@@ -5,7 +5,7 @@
   </head>
   <body>
     <div class="body">
-      <h1>Login</h1>
+      <h1>${message(code: 'user.login.title', default: 'Log in')}</h1>
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
@@ -15,7 +15,7 @@
             <tbody>            
               <tr class="prop">
                 <td class="name">
-                  <label for="login">Login:</label>
+                  <label for="login">${message(code: 'user.login.login', default: 'Login:')}</label>
                 </td>
                 <td>
                   <input type="text" id="login" name="login"/>
@@ -24,7 +24,7 @@
           
               <tr class="prop">
                 <td class="name">
-                  <label for="password">Password:</label>
+                  <label for="password">${message(code: 'user.login.password', default: 'Password:')}</label>
                 </td>
                 <td>
                   <input type="password" id="password" name="password"/>

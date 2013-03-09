@@ -14,7 +14,7 @@
 			    <div>
 			    	<p>${fieldValue(bean: tagInstance, field: "description")}</p>
 				    <p style="margin-bottom: 0;">
-				    <g:link action="show" id="${tagInstance.id}">Learn more...</g:link>
+				    <g:link action="show" id="${tagInstance.id}">${message(code: 'tag.learnMore', default: 'Learn more&hellip;')}</g:link>
 				    </p>
 			    </div>
 			  </div>
@@ -27,14 +27,14 @@
 						
 						<td>
 						<b style="color:#046380; font-size: 9"><g:link controller="Question" action="show" id="${questionInstance.id}">${questionInstance.subject}</g:link></b><br>
-						Author : <g:link controller="User" action="show" id="${questionInstance.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${questionInstance}" field="author.pseudo"/></span></g:link><br>
-						date : <g:formatDate date="${questionInstance.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
+						${message(code: 'tag.question.author', default: 'Author')} : <g:link controller="User" action="show" id="${questionInstance.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${questionInstance}" field="author.pseudo"/></span></g:link><br>
+						${message(code: 'tag.question.date', default: 'date')} : <g:formatDate date="${questionInstance.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
 						${fieldValue(bean: questionInstance, field: "message")}
 						</td>
 											
 						<td><br>
-						${fieldValue(bean: questionInstance, field: "nbViews")} views<br>
-						${fieldValue(bean: questionInstance, field: "nbVotes")} votes
+						${fieldValue(bean: questionInstance, field: "nbViews")} ${message(code: 'tag.question.view', default: 'views')}<br>
+						${fieldValue(bean: questionInstance, field: "nbVotes")} ${message(code: 'tag.question.votes', default: 'votes')}
 						</td>
 					</tr>
 				</g:each>	

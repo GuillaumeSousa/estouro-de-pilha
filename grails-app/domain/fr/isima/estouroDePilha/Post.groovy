@@ -9,6 +9,6 @@ class Post {
 	static belongsTo = [author:User]
 	
 	static constraints = {
-		message(maxSize:10000)
+		message(maxSize:10000, nullable:false)
 	}
 }

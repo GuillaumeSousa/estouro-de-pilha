@@ -64,7 +64,7 @@ class TagController {
             if (tagInstance.version > version) {
                 tagInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'tag.label', default: 'Tag')] as Object[],
-                          "Another user has updated this Tag while you were editing")
+                          "${message(code: 'tag.locking.failure', default: 'Locking failure')}")
                 render(view: "edit", model: [tagInstance: tagInstance])
                 return
             }

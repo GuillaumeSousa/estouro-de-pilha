@@ -11,7 +11,7 @@ class Question extends Post{
 	static hasMany = [answers:Answer, comments : Comment, tags : Tag]
 	
 	static constraint = {
-		subject(blank:false)
+		subject(blank:false, nullable:false)
 	}
 	
 	static mapping = {

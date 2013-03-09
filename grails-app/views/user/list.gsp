@@ -28,9 +28,9 @@
 						<td>
 							<g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "pseudo")}</g:link>
 							<div class="excerpt">
-							reputation : ${userInstance.reputation}<br>
-							questions : ${userInstance.questions.size()}<br>
-							answers : ${userInstance.answers.size()}	
+							${message(code: 'user.reputation', default: 'reputation')} : ${userInstance.reputation}<br>
+							${message(code: 'user.questions', default: 'questions')} : ${userInstance.questions.size()}<br>
+							${message(code: 'user.answers', default: 'answers')} : ${userInstance.answers.size()}	
 							</div>
 						</td>
 					<%if((i+1)%4 == 0) { %>

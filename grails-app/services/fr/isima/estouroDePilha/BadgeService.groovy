@@ -14,25 +14,21 @@ class BadgeService {
 		}
     }
 	
-	def checkSupporterBadge(User user)
+	def checkSupporterBadge(Long id)
 	{
-		if(user){
-			def User completeUser = User.get(user.id) // To avoid lazily initialization
-			if(!completeUser.hasTheBadge("Supporter")){
-				Badge supporter = Badge.find { badgeName == "Supporter" }
-				completeUser.addToBadges(supporter)
-			}
+		def User completeUser = User.get(id) // To avoid lazily initialization
+		if(!completeUser.hasTheBadge("Supporter")){
+			Badge supporter = Badge.find { badgeName == "Supporter" }
+			completeUser.addToBadges(supporter)
 		}
 	}
 	
-	def checkCriticBadge(User user)
+	def checkCriticBadge(Long id)
 	{
-		if(user){
-			def User completeUser = User.get(user.id) // To avoid lazily initialization
-			if(!completeUser.hasTheBadge("Critic")){
-				Badge critic = Badge.find { badgeName == "Critic" }
-				completeUser.addToBadges(critic)
-			}
+		def User completeUser = User.get(id) // To avoid lazily initialization
+		if(!completeUser.hasTheBadge("Critic")){
+			Badge critic = Badge.find { badgeName == "Critic" }
+			completeUser.addToBadges(critic)
 		}
 	}
 	

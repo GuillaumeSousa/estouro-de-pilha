@@ -4,9 +4,9 @@ class LoginTagLib {
 	
   def loginControl = {
     if(session.user){
-      out << """${link(action:"logout", controller:"user"){"Logout"}}"""
+      out << """${link(action:"logout", controller:"user"){"${message(code: 'loginTagLib.logout', default: 'Log out')}"}}"""
     } else {
-      out << """${link(action:"login", controller:"user"){"Login"}}"""      
+      out << """${link(action:"login", controller:"user"){"${message(code: 'loginTagLib.login', default: 'Log in')}"}}"""      
     }
   }
   
@@ -21,7 +21,7 @@ class LoginTagLib {
   def editUserControl = { attrs, body ->
 	  if(session.user){
 		  if(session.user.id == attrs.shownUserId){ 
-			  out << """${link(action:"edit", controller:"user", params:[id:session.user.id]){"Edit"}}"""
+			  out << """${link(action:"edit", controller:"user", params:[id:session.user.id]){"${message(code: 'loginTagLib.edit', default: 'Edit')}"}}"""
 		  }
 	  } 
   }
@@ -29,7 +29,7 @@ class LoginTagLib {
   def editQuestionControl = { attrs, body ->
 	  if(session.user){
 		  if(session.user.id == attrs.authorId || session.user.role == "admin"){
-			  out << """${link(action:"edit", controller:"question", params:[id:attrs.questionId]){"Edit"}}"""
+			  out << """${link(action:"edit", controller:"question", params:[id:attrs.questionId]){"${message(code: 'loginTagLib.edit', default: 'Edit')}"}}"""
 		  } 
 	  }
   }
@@ -37,7 +37,7 @@ class LoginTagLib {
   def deleteCommentControl = {attrs, body->
 	  if(session.user){
 		  if(session.user.role == "admin"){
-			out << """${link(action:"deleteComment", controller:"question", params:[id:attrs.commentId]){"Delete"}}"""
+			out << """${link(action:"deleteComment", controller:"question", params:[id:attrs.commentId]){"${message(code: 'loginTagLib.delete', default: 'Delete')}"}}"""
 		  }
 	  }
   }
@@ -45,7 +45,7 @@ class LoginTagLib {
   def deleteAnswerControl = {attrs, body->
 	  if(session.user){
 		  if(session.user.role == "admin"){
-		out << """${link(action:"deleteAnswer", controller:"question", params:[id:attrs.answerId]){"Delete"}}"""
+		out << """${link(action:"deleteAnswer", controller:"question", params:[id:attrs.answerId]){"${message(code: 'loginTagLib.delete', default: 'Delete')}"}}"""
 		  }
 	  }
   }
@@ -53,14 +53,14 @@ class LoginTagLib {
   def addTagControl = {attrs, body->
 	  if(session.user){
 		  if(session.user.role == "admin"){
-			out << """${link(action:"create", controller:"tag"){"New Tag"}}"""
+			out << """${link(action:"create", controller:"tag"){"${message(code: 'loginTagLib.newTag', default: 'New Tag')}"}}"""
 		  }
 	  }
   }
   
   def newUserControl = {attrs, body->
 	  if(!session.user){
-		out << """${link(action:"create", controller:"user"){"New User"}}"""
+		out << """${link(action:"create", controller:"user"){"${message(code: 'loginTagLib.newUser', default: 'New User')}"}}"""
 	  }
   }
   

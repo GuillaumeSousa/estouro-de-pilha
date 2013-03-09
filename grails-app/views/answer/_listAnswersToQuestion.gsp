@@ -25,13 +25,13 @@
 					</li>
 				</div>
 				<br>
-				<g:link url="[controller: 'comment', action: 'create', params: [postId: answer.id]]">add a comment</g:link><br><br>			
+				<g:link url="[controller: 'comment', action: 'create', params: [postId: answer.id]]">${message(code: 'answer.addComment', default: 'Add a comment')}</g:link><br><br>			
 				<g:if test="${answer?.comments}">
 					<g:render template="/comment/listComments" model="[comments : answer.comments.sort{it.postedDate}]"></g:render>
 				</g:if>
 			</td>
 			<td>
-				<h1>Related question<h1>
+				<h1>${message(code: 'answer.relatedQuestion', default: 'Related Question')}<h1>
 				<g:link controller="Question" action="show" id="${answer.question.id}">${answer.question.subject}</g:link>
 				<br>
 				<g:if test="${answer.question.tags}">			

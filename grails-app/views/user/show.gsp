@@ -37,7 +37,7 @@
 			  	<div class="reputation">
 					<h1>
 						<a>
-						Reputation
+						${message(code: 'user.show.reputation', default: 'Reputation')}
 						</a>
 					</h1>
 					<span>
@@ -51,35 +51,35 @@
 		            <table>
 		                <tbody>
 		                    <tr>
-		                        <th>bio</th>
-		                        <td>website</td>
+		                        <th>${message(code: 'user.show.bio', default: 'bio')}</th>
+		                        <td>${message(code: 'user.show.website', default: 'website')}</td>
 		                        <td><g:fieldValue bean="${userInstance}" field="website"/></td>
 		                    </tr>
 		                    <tr>
 		                        <th></th>
-		                        <td>location</td>
+		                        <td>${message(code: 'user.show.location', default: 'location')}</td>
 		                        <td class="label adr"><g:fieldValue bean="${userInstance}" field="location"/></td>
 		                    </tr>
 		                    <tr>
 		                        <th></th>
-		                        <td>email</td>
+		                        <td>${message(code: 'user.show.email', default: 'email')}</td>
 		                        <td><g:fieldValue bean="${userInstance}" field="login"/></td>
 		                    </tr>
 		                    <tr>
 		                        <th></th>
-		                        <td>real name</td>
+		                        <td>${message(code: 'user.show.realName', default: 'real name')}</td>
 		                        <td><g:fieldValue bean="${userInstance}" field="realName"/></td>
 		                    </tr>
 		                    <tr>
 		                        <th></th>
-		                        <td>birth date</td>
+		                        <td>${message(code: 'user.show.birthDate', default: 'birth date')}</td>
 		                        <td><g:formatDate date="${userInstance?.birthDate}" format="dd/MM/yyyy" /></td>
 		                    </tr>
 		                </tbody>
 		                <tbody>
 		                    <tr>
-		                        <th>visits</th>
-		                        <td>register date</td>
+		                        <th>${message(code: 'user.show.visits', default: 'visits')}</th>
+		                        <td>${message(code: 'user.show.registerDate', default: 'register date')}</td>
 		                        <td><g:formatDate date="${userInstance?.registerDate}" format="dd/MM/yyyy"/></td>
 		                    </tr>
 		                </tbody>
@@ -89,7 +89,7 @@
 			
 			<!-- About me -->
 			<div class="user-about-me">
-				<p><b>About me:</b></p>
+				<p><b>${message(code: 'user.show.aboutMe', default: 'About me:')}</b></p>
                 <p><g:fieldValue bean="${userInstance}" field="aboutMe"/></p>
 	        </div>
 	        <br>
@@ -104,7 +104,7 @@
 			    <div class="subheader">
 			        <h1>
 			        	<a>
-			   				<g:link action="listUserAnswers" params="[id:userInstance.id]"><span class='count'>${userInstance?.answers.size()}</span> Answer(s)</g:link>
+			   				<g:link action="listUserAnswers" params="[id:userInstance.id]"><span class='count'>${userInstance?.answers.size()}</span> ${message(code: 'user.show.answers', default: 'Answer(s)')}</g:link>
 						</a>
 					</h1>
 			    </div>
@@ -115,7 +115,7 @@
 			    <div class="subheader">
 			        <h1>
 			        	<a>
-			    			<g:link action="listUserQuestions" params="[id:userInstance.id]"><span class='count'>${userInstance?.questions.size()}</span> Question(s)</g:link>
+			    			<g:link action="listUserQuestions" params="[id:userInstance.id]"><span class='count'>${userInstance?.questions.size()}</span> ${message(code: 'user.show.questions', default: 'Question(s)')}</g:link>
 						</a>
 					</h1>
 			    </div>
@@ -126,7 +126,7 @@
 			    <div class="subheader">
 			        <h1>
 			        	<a>
-			    			<span class='count'>${userInstance?.badges.size()}</span> Badge(s)
+			    			<span class='count'>${userInstance?.badges.size()}</span> ${message(code: 'user.show.badges', default: 'Badge(s)')}
 						</a>
 					</h1>
 				</div>
@@ -138,7 +138,7 @@
 								<td>
 									<g:link controller="badge" action="show" id="${badgeInstance.id}">${fieldValue(bean: badgeInstance, field: "badgeName")}</g:link>
 									<div class="excerpt">
-									users : ${badgeInstance.users.size()}<br>
+									${message(code: 'user.show.badges.owners', default: 'Owners:')} ${badgeInstance.users.size()}<br>
 									${badgeInstance.description}<br>	
 									</div>
 								</td>

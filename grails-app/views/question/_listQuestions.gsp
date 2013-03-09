@@ -4,14 +4,14 @@
 		
 		<td>
 		<b style="color:#046380; font-size: 9"><g:link controller="Question" action="show" id="${question.id}">${question.subject}</g:link></b><br>
-		Author : <g:link controller="User" action="show" id="${question.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${question}" field="author.pseudo"/></span></g:link><br>
-		date : <g:formatDate date="${question.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
+		${message(code: 'question.listQuestions.author', default: 'Author')} : <g:link controller="User" action="show" id="${question.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${question}" field="author.pseudo"/></span></g:link><br>
+		${message(code: 'question.listQuestions.date', default: 'date')} : <g:formatDate date="${question.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
 		${question.message}
 		</td>
 							
 		<td width="10%;"><br>
-		${question.nbViews} views<br>
-		${question.nbVotes} votes
+		${question.nbViews} ${message(code: 'question.listQuestions.views', default: 'views')}<br>
+		${question.nbVotes} ${message(code: 'question.listQuestions.votes', default: 'votes')}
 		</td>
 	</tr>
 	<tr>

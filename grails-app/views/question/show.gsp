@@ -66,7 +66,7 @@
 				</tr>
 			</table>
 			
-			<g:link url="[controller: 'comment', action: 'create', params: [postId: questionInstance.id]]">add a comment</g:link><br><br>			
+			<g:link url="[controller: 'comment', action: 'create', params: [postId: questionInstance.id]]">${message(code: 'question.show.addComment', default: 'Add a comment')}</g:link><br><br>			
 			<g:if test="${questionInstance?.comments}">
 				<g:render template="/comment/listComments" model="[comments : questionInstance.comments.sort{it.postedDate}]"></g:render>
 			</g:if>
@@ -75,11 +75,11 @@
 			<g:if test="${questionInstance?.answers}">
 				<!-- Buttons to sort answers -->
 				<div class="buttons" style="float: right;">
-					<g:remoteLink controller="question" action="sortAnswersByDate" id="${questionInstance?.id}" update="answers">oldest</g:remoteLink>
-					<g:remoteLink controller="question" action="sortAnswersByVotes" id="${questionInstance?.id}" update="answers">votes</g:remoteLink>
+					<g:remoteLink controller="question" action="sortAnswersByDate" id="${questionInstance?.id}" update="answers">${message(code: 'question.show.oldest', default: 'oldest')}</g:remoteLink>
+					<g:remoteLink controller="question" action="sortAnswersByVotes" id="${questionInstance?.id}" update="answers">${message(code: 'question.show.votes', default: 'votes')}</g:remoteLink>
 				</div>
 				<h1>
-					${questionInstance.answers.size()} Answers
+					${questionInstance.answers.size()} ${message(code: 'question.show.answers', default: 'Answers')}
 				</h1>
 				<br>
 				<!-- List answers -->
@@ -91,7 +91,7 @@
 			
 			<!-- Form to answer the question -->
 			<h1>
-				<span class="property-value" aria-labelledby="subject-label">Your Answer</span>		
+				<span class="property-value" aria-labelledby="subject-label">${message(code: 'question.show.yourAnswer', default: 'Your Answer')}</span>		
 			</h1>
 			
 			<g:form controller="question" action="addAnswer" id="${questionInstance.id}">	

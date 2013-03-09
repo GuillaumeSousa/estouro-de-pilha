@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Estouro de Pilha</title>
+		<title>${message(code: 'index.title', default: 'Estouro De Pilha')}</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
@@ -85,7 +85,7 @@
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-			<h1>Recent Tags</h1>
+			<h1>${message(code: 'index.recentTags', default: 'Recent Tags')}</h1>
 			<table>
 				<g:if test="${tagList}">			
 					<g:each in="${tagList}" var="t">

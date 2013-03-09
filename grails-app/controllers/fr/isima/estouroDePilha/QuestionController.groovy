@@ -34,6 +34,7 @@ class QuestionController {
         def questionInstance = new Question(params)
 		questionInstance.author = User.findByPseudo(session.user.pseudo)
         if (!questionInstance.save(flush: true)) {
+			log("Question.save failed")
             render(view: "create", model: [questionInstance: questionInstance])
             return
         }
@@ -81,7 +82,7 @@ class QuestionController {
             if (questionInstance.version > version) {
                 questionInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'question.label', default: 'Question')] as Object[],
-                          "Another user has updated this Question while you were editing")
+                          "${message(code: 'question.locking.failure', default: 'Locking failure')}")
                 render(view: "edit", model: [questionInstance: questionInstance])
                 return
             }
@@ -162,10 +163,5 @@ class QuestionController {
 		answer.comments.clear()
 		answer.delete(flush: true)
 		redirect(action: "show", id: question.id)
-	}
-	
-	def displayMessage(Long id) {
-		flash.message = "You must be connected to vote"
-		redirect(action: "show", id: id)
 	}
 }

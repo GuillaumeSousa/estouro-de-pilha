@@ -13,7 +13,7 @@ class UserController {
 
 	def auth() {
 		if( !(session?.user?.role == "admin") ){
-			flash.message = "You must be an administrator to perform that task."
+			flash.message = "${message(code: 'user.adminonly.message', default: 'You must be an administrator to perform that task.')}"
 			redirect(action:"login",params:params)
 			return false
 		}
@@ -78,7 +78,7 @@ class UserController {
             if (userInstance.version > version) {
                 userInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'user.label', default: 'User')] as Object[],
-                          "Another user has updated this User while you were editing")
+                          "${message(code: 'user.locking.failure', default: 'Locking failure')}")
                 render(view: "edit", model: [userInstance: userInstance])
                 return
             }
@@ -121,16 +121,16 @@ class UserController {
 	  def user = User.findByLoginAndPassword(params.login, params.password)
 	  if(user){
 		session.user = user
-		flash.message = "Hello ${user.pseudo}!"
+		flash.message = message(code: 'user.helloUser.message', args: [user.pseudo])
 		redirect(controller:"index")
 	  }else{
-		flash.message = "Sorry, ${params.login}. Please try again."
+		flash.message = message(code: 'user.badAuthentication.message', args: [params.login])
 		redirect(action:"login")
 	  }
 	}
 	
 	def logout = {
-	  flash.message = "Goodbye ${session.user.pseudo}"
+	  flash.message = message(code: 'user.goodbye.message', args: [user.pseudo])
 	  session.user = null
 	  redirect(controller:"index")
 	}
@@ -158,7 +158,7 @@ class UserController {
 	  // List of OK mime-types 
 		def okcontents = ['image/png', 'image/jpeg', 'image/gif'] 
 		if (! okcontents.contains(f.getContentType())) { 
-			flash.message = "Avatar must be one of: ${okcontents}" 
+			flash.message = message(code: 'user.badAvatarType.message', args: [okcontents]) 
 			render(view:'choose_avatar', model:[user:user]) 
 			return; 
 		}
@@ -170,11 +170,11 @@ class UserController {
 	  
 	  // Validation works, will check if the image is too big 
 		if (!user.save(flush: true)) {
-			flash.message = "Avatar is too big (256K max)"
+			flash.message = message(code: 'user.badAvatarSize.message', default:'Avatar too big')
 			render(view:'choose_avatar', model:[user:user]) 
 			return; 
 		} 
-		flash.message = "Avatar (${user.avatarType}, ${user.avatar.size()} bytes) uploaded." 
+		flash.message = message(code: 'user.avatarUploaded.message', args: [user.avatarType, user.avatar.size()])  
 		redirect(action:"show", id: user.id) 
 	}
 	

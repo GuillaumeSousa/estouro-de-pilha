@@ -20,7 +20,7 @@
 						<td>
 							<g:link action="show" id="${badgeInstance.id}">${fieldValue(bean: badgeInstance, field: "badgeName")}</g:link>
 							<div class="excerpt">
-							users : ${badgeInstance.users.size()}<br>
+							${message(code: 'badge.owners', default: 'Owners')} : ${badgeInstance.users.size()}<br>
 							${badgeInstance.description}<br>	
 							</div>
 						</td>
