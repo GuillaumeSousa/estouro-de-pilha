@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta name="layout" content="main" />
-    <title>Login</title>         
+    <title>${message(code: 'user.login.title', default: 'Log in')}</title>         
   </head>
   <body>
     <div class="body">
@@ -35,7 +35,7 @@
         </div>
         <div class="buttons">
           <span class="button">
-            <input class="save" type="submit" value="Login" />
+            <input class="button" type="submit" value="${message(code: 'user.login.connection', default: 'Connection')}" />
           </span>
         </div>
       </g:form>

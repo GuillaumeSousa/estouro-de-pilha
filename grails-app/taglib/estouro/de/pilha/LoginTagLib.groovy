@@ -21,7 +21,7 @@ class LoginTagLib {
   def editUserControl = { attrs, body ->
 	  if(session.user){
 		  if(session.user.id == attrs.shownUserId){ 
-			  out << """${link(action:"edit", controller:"user", params:[id:session.user.id]){"${message(code: 'loginTagLib.edit', default: 'Edit')}"}}"""
+			  out << """${link(class:"edit",action:"edit", controller:"user", params:[id:session.user.id]){"${message(code: 'loginTagLib.edit', default: 'Edit')}"}}"""
 		  }
 	  } 
   }
@@ -29,7 +29,7 @@ class LoginTagLib {
   def editQuestionControl = { attrs, body ->
 	  if(session.user){
 		  if(session.user.id == attrs.authorId || session.user.role == "admin"){
-			  out << """${link(action:"edit", controller:"question", params:[id:attrs.questionId]){"${message(code: 'loginTagLib.edit', default: 'Edit')}"}}"""
+			  out << """${link(class:"edit", action:"edit", controller:"question", params:[id:attrs.questionId]){"${message(code: 'loginTagLib.edit', default: 'Edit')}"}}"""
 		  } 
 	  }
   }
@@ -60,7 +60,7 @@ class LoginTagLib {
   
   def newUserControl = {attrs, body->
 	  if(!session.user){
-		out << """${link(action:"create", controller:"user"){"${message(code: 'loginTagLib.newUser', default: 'New User')}"}}"""
+		out << """${link(class:"create", action:"create", controller:"user"){"${message(code: 'loginTagLib.newUser', default: 'New User')}"}}"""
 	  }
   }
   

@@ -3,12 +3,12 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'tag.label', default: 'Tag')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title><g:message code="${tagInstance.tagname}" /></title>
 	</head>
 	
 	<body>
-	  <div>
-	  
+	  <div class="content scaffold-list">
+	  	  <h1><g:message code="${tagInstance.tagname}" /></h1>
 	  	  <div style="clear:both">
 		  	  <div class="tag-shortdesc" style="margin-top: 10px;">
 			    <div>

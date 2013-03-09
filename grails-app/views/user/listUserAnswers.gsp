@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 <meta name="layout" content="main"/>
-<title>User answer List</title>
+<title>${message(code: 'user.listuseranswers.title', default: 'User Answers List') }</title>
 </head>
 <body>
   	<div class="body">

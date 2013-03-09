@@ -28,6 +28,7 @@
 	            	<div class="logbar">
 						<ul>
 							<li><g:loginControl/></li>
+							<li><g:newUserControl/></li>
 							<li><g:profileControl/></li>
 						</ul>
 					</div>
@@ -43,7 +44,7 @@
 					<li><g:link controller="User" action="list">${message(code: 'topbar.users.label', default:"Users")}</g:link></li>
 					<li><g:link controller="Tag" action="list">${message(code: 'topbar.tags.label', default:"Tags")}</g:link></li>
 					<li><g:link controller="Badge" action="list">${message(code: 'topbar.badges.label', default:"Badges")}</g:link></li>
-					<li><g:link controller="Question" action="create">${message(code: 'topbar.askQuestion.label', default:"Ask Question")}</g:link></li>
+					<li><g:link controller="Question" action="create" class="create">${message(code: 'topbar.askQuestion.label', default:"Ask Question")}</g:link></li>
 				</ul>
 			</div>
 		</div>
