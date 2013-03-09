@@ -8,7 +8,7 @@
 		<td style="word-wrap: break-word">
 			<g:render template="/comment/showComment" model="[comment: c]" />
 		</td>
-		<td width="7%;">
+		<td width="15%;">
 			<g:deleteCommentControl commentId="${c?.id}"/>
 		</td>
 	</tr>
