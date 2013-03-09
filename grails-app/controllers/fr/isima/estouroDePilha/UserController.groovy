@@ -130,7 +130,7 @@ class UserController {
 	}
 	
 	def logout = {
-	  flash.message = message(code: 'user.goodbye.message', args: [user.pseudo])
+	  flash.message = message(code: 'user.goodbye.message', args: [session.user.pseudo])
 	  session.user = null
 	  redirect(controller:"index")
 	}

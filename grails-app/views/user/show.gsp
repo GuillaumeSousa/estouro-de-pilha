@@ -35,6 +35,9 @@
 			  		<img class="avatar" src="${createLink(controller:'user', action:'avatar_image', id:userInstance.id)}" />
 			  	</g:if>
 			  	<div class="reputation">
+				  	<g:changeAvatarControl profileUserId="${userInstance?.id}" />				
+				</div>
+			  	<div class="reputation">
 					<h1>
 						<a>
 						${message(code: 'user.show.reputation', default: 'Reputation')}

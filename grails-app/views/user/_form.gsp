@@ -1,9 +1,5 @@
 <%@ page import="fr.isima.estouroDePilha.User" %>
 
-<g:link controller="user" action="choose_avatar" id="${userInstance?.id}">
-	<g:message code="user.editAvatar" default="Change avatar" />
-</g:link>
-
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'login', 'error')} required">
 	<label for="login">
 		<g:message code="user.login.label" default="Login (email address)" />

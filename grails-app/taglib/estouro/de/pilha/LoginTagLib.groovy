@@ -64,4 +64,13 @@ class LoginTagLib {
 	  }
   }
   
+  def changeAvatarControl = {attrs, body->
+	  if(session.user){
+		  if(session.user.id == attrs.profileUserId){
+			  out << """${link(action:"choose_avatar", controller:"user", params:[id:session.user.id]){"${message(code: 'user.editAvatar', default: 'Change avatar')}"}}"""
+		  }
+		  
+	  }
+  }
+  
 }
