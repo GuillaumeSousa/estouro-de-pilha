@@ -7,8 +7,14 @@
 	</head>
 	
 	<body>
-	  <div>
-	  
+
+	<g:form>
+		<fieldset class="buttons">
+			<g:hiddenField name="id" value="${tagInstance?.id}" />
+			<g:editTagControl tagId="${tagInstance?.id}"/>
+		</fieldset>
+	</g:form>
+	  <div> 
 	  	  <div style="clear:both">
 		  	  <div class="tag-shortdesc" style="margin-top: 10px;">
 			    <div>

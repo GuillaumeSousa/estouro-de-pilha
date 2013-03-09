@@ -9,11 +9,17 @@
 	</head>
 	<body>
 		<a href="#show-question" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
+	
+		<g:form>
+			<fieldset class="buttons">
+				<g:hiddenField name="id" value="${questionInstance?.id}" />
+				<g:editQuestionControl authorId="${questionInstance.author?.id}" questionId="${questionInstance.id}"/>
+			</fieldset>
+		</g:form>
 		<div id="show-question" class="content scaffold-show" role="main">
 			<h1>
 				<g:if test="${questionInstance?.subject}">
-					<span class="property-value" aria-labelledby="subject-label"><g:fieldValue bean="${questionInstance}" field="subject"/></span>		
+					<span class="property-value" style="word-wrap: break-word" aria-labelledby="subject-label"><g:fieldValue bean="${questionInstance}" field="subject"/></span>		
 				</g:if>	
 			</h1>
 			<g:if test="${flash.message}">
@@ -100,12 +106,7 @@
 		    </g:form>	
 			</ol>
 			
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${questionInstance?.id}" />
-					<g:editQuestionControl authorId="${questionInstance.author?.id}" questionId="${questionInstance.id}"/>
-				</fieldset>
-			</g:form>
+			
 		</div>
 	</body>
 </html>

@@ -12,11 +12,7 @@
 		<div id="page-body" role="main">
 			<!-- List questions -->
 		    <div id="questions">
-    				<g:render template="/question/listQuestions" var="question" collection="${questionInstanceList}"/>
-			</div>
-						
-			<div class="pagination">
-				<g:paginate total="${questionInstanceTotal}" />
+    			<g:render template="/question/listQuestions" var="question" collection="${questionInstanceList}"/>
 			</div>
 		</div>
 	</body>

@@ -1,8 +1,8 @@
 
-<table>
+<table style="table-layout: fixed; width: 100%">
 	<tr>
 		
-		<td>
+		<td style="word-wrap: break-word">
 		<b style="color:#046380; font-size: 9"><g:link controller="Question" action="show" id="${question.id}">${question.subject}</g:link></b><br>
 		${message(code: 'question.listQuestions.author', default: 'Author')} : <g:link controller="User" action="show" id="${question.author.id}"><span class="property-value" aria-labelledby="author-label"><g:fieldValue bean="${question}" field="author.pseudo"/></span></g:link><br>
 		${message(code: 'question.listQuestions.date', default: 'date')} : <g:formatDate date="${question.postedDate}" format="dd/MM/yyyy - HH:mm"/><br><br>
