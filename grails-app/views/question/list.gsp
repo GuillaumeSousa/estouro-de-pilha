@@ -12,9 +12,7 @@
 		<div id="page-body" class="content scaffold-list" role="main">
 			<h1><g:message code="question.list.title" /></h1>
 			<!-- List questions -->
-		    <div id="questions">
-    			<g:render template="/question/listQuestions" var="question" collection="${questionInstanceList}"/>
-			</div>
+			<g:render template="/question/listQuestionsPaginated" model="[questionList: questionInstanceList, questionNumber: questionInstanceTotal]" />
 		</div>
 	</body>
 </html>

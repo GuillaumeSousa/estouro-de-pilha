@@ -21,10 +21,11 @@ class QuestionController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
+    def list() {
+		if (!params.max) params.max = 5
+		if (!params.offset) params.offset = 0 
 		def questionList = Question.list(params).sort{it.postedDate}.reverse()
-		def questionNumber = questionList.size()
-        [questionInstanceList: questionList, questionInstanceTotal: questionNumber]
+        [questionInstanceList: questionList, questionInstanceTotal: Question.count()]
     }
 
     def create() {
