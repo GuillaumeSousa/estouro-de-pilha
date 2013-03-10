@@ -149,8 +149,7 @@ class BootStrap {
 				).save(failOnError: true)
 				tags = [tag2,tag7]
 			new Question(subject:"How is the performance of Groovy compared with Java?",
-				message:"Is there a good reason why there is no Pair in Java? What would be the equivalent of this C++ construct? I would rather avoid reimplementing my own."
-						+"It seems that 1.6 is providing something similar (AbstractMap.SimpleEntry), but this looks quite convoluted.",
+				message:"What the performance of Groovy compared with Java?",
 				author:user4,
 				tags:tags,
 				postedDate: Date.parse("yyyy-MM-dd HH:mm", "2013-01-19 08:51")
