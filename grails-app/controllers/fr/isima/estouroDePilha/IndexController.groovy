@@ -7,6 +7,11 @@ class IndexController {
 	def index(Integer max){
 		def questionList = Question.findAll().sort{it.postedDate}.reverse()
 		def questionNumber = questionList.size()
-		[questionList: questionList, questionNumber: questionNumber, tagList:Tag.findAll().sort{it.questions.count}.reverse()]
+		def tagList = Tag.findAll().sort{it.questions.count}.reverse()
+		if (tagList.size() > 10)
+		{
+			tagList = tagList[0..9]
+		}
+		[questionList: questionList, questionNumber: questionNumber, tagList:tagList]
 	}
 }
