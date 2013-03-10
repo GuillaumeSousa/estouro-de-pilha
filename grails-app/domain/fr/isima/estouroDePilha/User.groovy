@@ -24,7 +24,7 @@ class User {
     static constraints = {
 		login(blank: false, email : true, unique:true)
 		password(blank:false, minSize:8, nullable:false,password:true)
-		pseudo(blank:false, unique:true)
+		pseudo(blank:false, unique:true, maxSize:30)
 		realName(nullable:true)
 		website(nullable:true)
 		location(nullable:true)
