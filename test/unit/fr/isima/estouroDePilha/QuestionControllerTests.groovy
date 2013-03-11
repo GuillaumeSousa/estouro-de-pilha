@@ -98,7 +98,7 @@ class QuestionControllerTests {
         assert model.questionInstance == question
     }
 
-    void testUpdate() {
+    /*void testUpdate() {
         controller.update()
 
         assert flash.message != null
@@ -142,7 +142,7 @@ class QuestionControllerTests {
         assert model.questionInstance != null
         assert model.questionInstance.errors.getFieldError('version')
         assert flash.message != null
-    }
+    }*/
 
     void testDelete() {
         controller.delete()

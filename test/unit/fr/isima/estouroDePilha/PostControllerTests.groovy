@@ -20,11 +20,7 @@ class PostControllerTests {
         // Tear down logic here
     }
 
-     void testIncrVotes() {
-
-    }
-	 
-	 void testDecrVotes() {
-		 
-	 }
+    void test() {
+		assertTrue(true)
+	}
 }

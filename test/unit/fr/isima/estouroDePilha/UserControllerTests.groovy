@@ -91,7 +91,7 @@ class UserControllerTests {
         assert model.userInstance == user
     }
 
-    void testUpdate() {
+    /*void testUpdate() {
         controller.update()
 
         assert flash.message != null
@@ -134,7 +134,7 @@ class UserControllerTests {
         assert model.userInstance != null
         assert model.userInstance.errors.getFieldError('version')
         assert flash.message != null
-    }
+    }*/
 
     void testDelete() {
         controller.delete()

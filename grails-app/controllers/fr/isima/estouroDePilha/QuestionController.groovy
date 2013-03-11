@@ -36,7 +36,7 @@ class QuestionController {
         def questionInstance = new Question(params)
 		questionInstance.author = User.findByPseudo(session.user.pseudo)
         if (!questionInstance.save(flush: true)) {
-			log("Question.save failed")
+			log.info("Question.save failed")
             render(view: "create", model: [questionInstance: questionInstance])
             return
         }
