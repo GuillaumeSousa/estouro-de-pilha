@@ -130,7 +130,7 @@ class UserController {
 	}
 	
 	def logout = {
-	  flash.message = message(code: 'user.goodbye.message', args: [session.user.pseudo])
+	  flash.message = message(code: 'user.goodbye.message', args: [session.user?.pseudo])
 	  session.user = null
 	  redirect(controller:"index")
 	}
@@ -138,7 +138,7 @@ class UserController {
 	def accessProfile = {
 		def user = session.user
 		if(!user){
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), user.id])
+			flash.message = message(code: 'user.sessionexpired.message', default:"Session expired")
             redirect(action: "list")
             return
 		}

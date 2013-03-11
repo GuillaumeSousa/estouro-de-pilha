@@ -25,6 +25,7 @@ class PostController {
 			//TODO : try to display this fucking message
 		}
 		render Post.get(id).nbVotes
+		render messageToDisplay
 	}
 	
 	def decrVotes(Long id){

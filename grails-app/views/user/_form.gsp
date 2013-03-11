@@ -19,9 +19,9 @@
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'pseudo', 'error')} ">
 	<label for="pseudo">
 		<g:message code="user.pseudo.label" default="Pseudo" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="pseudo" value="${userInstance?.pseudo}"/>
+	<g:textField name="pseudo" required="" value="${userInstance?.pseudo}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'realName', 'error')} ">
