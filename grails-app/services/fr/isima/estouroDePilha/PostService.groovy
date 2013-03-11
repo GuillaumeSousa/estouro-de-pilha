@@ -19,6 +19,7 @@ class PostService {
 				log.info("user has " + user.votesUp.size() + " votesUp")
 				currentPost.nbVotes++
 				// Update reputation
+				badgeService = new BadgeService()
 				badgeService.incrReputationOfAuthor(idPost)
 				badgeService.checkSupporterBadge(idUser)
 				badgeService.checkNiceAnswerBadge(idPost)
@@ -45,6 +46,7 @@ class PostService {
 				log.info("user has " + user.votesDown.size() + " votesDown")
 				currentPost.nbVotes--
 				// Update reputation
+				badgeService = new BadgeService()
 				badgeService.decrReputationOfAuthor(idPost, idUser)
 				badgeService.checkCriticBadge(idUser)
 			}

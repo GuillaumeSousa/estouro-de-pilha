@@ -38,7 +38,7 @@ class BadgeServiceTests {
         // Tear down logic here
     }
 
-    /*void testCheckAutobiographerBadge() {
+    void testCheckAutobiographerBadge() {
 		mockDomain(User)
 		def user = new User(
 			login:"admin@groovyrocks.com",
@@ -93,7 +93,7 @@ class BadgeServiceTests {
 		badgeService.checkCriticBadge(user.id)
 		assertTrue(user.hasTheBadge("Critic"))
 		assertEquals(user.badges.size(), 1)
-	}*/
+	}
 	
 	void test(){
 		assertTrue(true)
