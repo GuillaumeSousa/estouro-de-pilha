@@ -195,8 +195,7 @@ class UserController {
 	def listUserQuestions(Long id) {
 		def user = User.get(id)
 		def questionList = Question.findAllByAuthor(user)
-		
-		[questionInstanceList: questionList.sort{it.postedDate}.reverse(), questionInstanceTotal: questionList.size()]	
+		[questionList: questionList.sort{it.postedDate}.reverse(), questionInstanceTotal: questionList.size()]	
 	}
 	
 	def listUserAnswers(Long id) {

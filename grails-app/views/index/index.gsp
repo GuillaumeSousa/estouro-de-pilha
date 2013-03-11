@@ -154,10 +154,10 @@
 			<g:if test="${flash.message}">
 		        <div class="message">${flash.message}</div>
 		    </g:if>
-			<!-- List questions -->
+		    <!-- List questions -->
 		    <div id="questions">
-    			<g:render template="/question/listQuestions" var="question" collection="${questionList}"/>
-			</div>		
+    			<g:render template="/question/listQuestions" model="[questionList: questionList]"/>
+			</div>			
 		</div>
 	</body>
 </html>

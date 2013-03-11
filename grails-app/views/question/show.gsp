@@ -101,7 +101,7 @@
 			</h1>
 			
 			<g:form controller="question" action="addAnswer" id="${questionInstance.id}">	
-		        <g:textArea class="property-value" style="width:90%; height:200px;" name="messageAnswer" id="messageAnswer"/>
+		        <g:textArea class="property-value" required="" style="width:90%; height:200px;" name="messageAnswer" id="messageAnswer"/>
 		        <g:submitButton update="answers" name="postAnswer" style="background-color: #4a6b82; color:white;" value="Post Your Answer" />
 		    </g:form>	
 			</ol>

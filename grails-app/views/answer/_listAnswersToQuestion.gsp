@@ -30,7 +30,7 @@
 					<g:render template="/comment/listComments" model="[comments : answer.comments.sort{it.postedDate}]"></g:render>
 				</g:if>
 			</td>
-			<td>
+			<td width="25%;">
 				<h1>${message(code: 'answer.relatedQuestion', default: 'Related Question')}<h1>
 				<g:link controller="Question" action="show" id="${answer.question.id}">${answer.question.subject}</g:link>
 				<br>

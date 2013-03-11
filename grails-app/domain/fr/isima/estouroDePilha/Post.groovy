@@ -7,6 +7,7 @@ class Post {
 	String 	message
 	
 	static belongsTo = [author:User]
+	static hasMany = [votes:Vote]
 	
 	static constraints = {
 		message(maxSize:10000, nullable:false)
