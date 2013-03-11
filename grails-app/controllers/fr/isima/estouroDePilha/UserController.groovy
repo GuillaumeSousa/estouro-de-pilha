@@ -158,7 +158,7 @@ class UserController {
 	  // List of OK mime-types 
 		def okcontents = ['image/png', 'image/jpeg', 'image/gif'] 
 		if (! okcontents.contains(f.getContentType())) { 
-			flash.message = message(code: 'user.badAvatarType.message', args: [okcontents]) 
+			flash.message = message(code: 'user.badAvatarType.message') 
 			render(view:'choose_avatar', model:[user:user]) 
 			return; 
 		}
