@@ -60,8 +60,15 @@ class BadgeService {
 		voter.reputation -= 1
 	}
 	
-	def checkAnswerBadges(Long postId)
+	def checkNiceAnswerBadge(Long postId)
 	{
-		
+		Post post = Post.get(postId)
+		User author = User.get(post.author.id)
+		if(post.nbVotes >= 10){
+			if(!author.hasTheBadge("Nice Answer")){
+				Badge niceanswer = Badge.find { badgeName == "Nice Answer" }
+				author.addToBadges(niceanswer)
+			}
+		}
 	}
 }

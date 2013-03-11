@@ -40,6 +40,42 @@
 				font-size: 1.1em;
 				margin: 0 0 0.3em;
 			}
+			
+		 	#status2 {
+				background-color: #eee;
+				border: .2em solid #fff;
+				margin: 2em 2em 1em;
+				padding: 0.7em .3em;
+				width: 12em;
+				float: right;
+				-moz-box-shadow: 0px 0px 1.25em #ccc;
+				-webkit-box-shadow: 0px 0px 1.25em #ccc;
+				box-shadow: 0px 0px 1.25em #ccc;
+				-moz-border-radius: 0.6em;
+				-webkit-border-radius: 0.6em;
+				border-radius: 0.6em;
+			}
+
+			.ie6 #status2 {
+				display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
+			}
+
+			#status2 ul {
+				font-size: 0.9em;
+				list-style-type: none;
+				margin-bottom: 0.6em;
+				padding: 0;
+			}
+            
+			#status2 li {
+				line-height: 1.3;
+			}
+
+			#status2 h1 {
+				text-transform: uppercase;
+				font-size: 1.1em;
+				margin: 0 0 0.3em;
+			}
 
 			#page-body {
 				margin-right: 17em;
@@ -71,7 +107,10 @@
 				#status {
 					display: none;
 				}
-
+				#status2
+				{
+					display: none;
+				}
 				#page-body {
 					margin: 0 1em 1em;
 				}
@@ -85,18 +124,29 @@
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-			<h1>${message(code: 'index.recentTags', default: 'Recent Tags')}</h1>
 			<table>
-				<g:if test="${tagList}">			
-					<g:each in="${tagList}" var="t">
-						<tr>
-							<td>
-								<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
-								x ${t.questions.size()}
-							</td>
-						</tr>
-					</g:each>
-				</g:if>
+				<tr>
+					<td>
+						<img src="images/logo_gauche.png" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h1>${message(code: 'index.recentTags', default: 'Recent Tags')}</h1>
+						<table>
+							<g:if test="${tagList}">			
+								<g:each in="${tagList}" var="t">
+									<tr>
+										<td>
+											<g:link class="post-tag" controller="Tag" action="taggedQuestions" id="${t.id}">${fieldValue(bean: t, field: "tagname")}</g:link>
+											x ${t.questions.size()}
+										</td>
+									</tr>
+								</g:each>
+							</g:if>
+						</table>
+					</td>
+				</tr>
 			</table>
 		</div>
 		

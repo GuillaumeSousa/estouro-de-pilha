@@ -9,7 +9,6 @@ class PostService {
 	
 	def incrVotes(Long idPost, Long idUser) {
 		def currentPost = Post.get(idPost)
-		def messageSource = grailsApplication.getMainContext()
 		User user = User.get(idUser)
 		// If the user is not trying to vote to his own post
 		if(user.id != currentPost.author.id){
@@ -22,26 +21,20 @@ class PostService {
 				// Update reputation
 				badgeService.incrReputationOfAuthor(idPost)
 				badgeService.checkSupporterBadge(idUser)
+				badgeService.checkNiceAnswerBadge(idPost)
 			}
 			else{
 				log.info("User is trying to vote several times for a same post")
-				//messageToDisplay = ${message(code: 'post.alreadyvoted.trytovote.message', default: 'You have already voted')}
-				messageSource.getMessage('post.alreadyvoted.trytovote.message', null, LCH.getLocale())
 			}
 		}
 		else{
 			log.info("User is trying to vote to his own post")
-			//messageToDisplay = message(code: 'post.userisauthor.trytovote.message', default: 'You cannot vote for your post')
-			messageSource.getMessage('post.userisauthor.trytovote.message', null, LCH.getLocale())
 			
 		}
-		
-		messageSource
 	}
 	
 	def decrVotes(Long idPost, Long idUser){
 		def currentPost = Post.get(idPost)
-		def message = ""
 		User user = User.get(idUser)
 		// If the user is not trying to vote to his own post
 		if(user.id != currentPost.author.id){
@@ -57,15 +50,11 @@ class PostService {
 			}
 			else{
 				log.info("User is trying to vote several times for a same post")
-				message = "${message(code: 'post.alreadyvoted.trytovote.message', default: 'You have already voted')}"
 			}
 		}
 		else{
 			log.info("User is trying to vote to his own post")
-			message = "${message(code: 'post.userisauthor.trytovote.message', default: 'You cannot vote for your post')}"
 		}
-		
-		message
 	}
 	
 }
